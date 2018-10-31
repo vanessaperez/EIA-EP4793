@@ -3,13 +3,14 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    {% if user.is_authenticated %}
-        <p>Hi {{ user.username }}
+    {% if user.is_superuser %}
+        <p><a href="{% url 'signup' %}">Sign Up</a></p>
+    {% elif user.is_authenticated %}
+        <p>Hi {{ user.first_name }}
         <p><a href="{% url 'logout' %}">Log out</a></p>
     {% else %}
-        <p><a href="{% url 'signup' %}">Sign Up</a></p>
         <p><a href="{% url 'login' %}">Log In </a></p>
     {% endif %}
 {% endblock %}
-</body>
-</html>
+
+
