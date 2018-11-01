@@ -552,10 +552,11 @@ a, a:hover{
 .navbar {
 
     background-color: #4f6228;
-    margin-left: 10em;
-    margin-right: -1.1em;
+
 }
 }
 .login{
   margin-top: 100px;
+  padding-left: 400px;
 }
+
