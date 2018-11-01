@@ -67,7 +67,7 @@
                 <div class="sidebar-menu">
                     <ul>
                         <li class="sidebar-dropdown">
-                            <a href="#">
+                            <a href="#">                                
                                 <i class="fa fa-home" style="font-size:24px"></i
                                 <span>
                                     <strong>Home</strong>
@@ -100,6 +100,16 @@
                                 </span>
                             </a>
                         </li>
+                        {% if user.is_superuser %}
+                        <li class="sidebar-dropdown">
+                            <a href="{% url 'signup' %}">
+                                <i class="fa fa-address-card" style="font-size:24px"></i>
+                                <span>
+                                    <strong>Registrar usuarios</strong>
+                                </span>
+                            </a>
+                        </li>
+                        {% endif %}
                 </div>
                 <!-- sidebar-menu  -->
             </div>
