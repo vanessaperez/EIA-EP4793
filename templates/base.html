@@ -2,118 +2,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
-    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
-
-  <!-- COMIENZO DEL CSS -->
-
-  {% block css %}
-  {% endblock %}
-
-  <!-- FIN DEL CSS -->
 
     <title>{% block title %}EIA{% endblock title %}</title>
 
 </head>
-
 <body>
 
-  <!-- COMIENZO DEL SIDEBAR -->
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-sm navbar-light bg-faded">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-content" aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-
-  <ul id="slide-out" class="side-nav fixed z-depth-4">
-
-    <!-- PARTE SUPERIOR DEL SIDEBAR -->
-
-    <li>
-      <div class="userView">
-        <div class="background">
-            <div class="fill"></div>
-        </div>
-        <a href="#"><img class="circle" src="{% static 'img/germanbb.jpg' %}"></a>
-        <a href="#"><span class="white-text name">Bienvenido Individuo</span></a>
-      </div>
-    </li>
-
-    <!-- FIN DE LA PARTE SUPERIOR DEL SIDEBAR -->
-
-    <li><div class="divider"></div></li>
-
-    <!-- PARTE INFERIOR DEL SIDEBAR -->
-
-    <li>
-      <a class="active" href="#"><i class="material-icons white-item white-text">home</i>
-        <span class="white-text">Home</span>
-      </a>
-    </li>
-    <li>
-      <a href="#"><i class="material-icons white-item white-text">keyboard</i>
-        <span class="white-text">Calculadora</span>
-      </a>
-    </li>
-    <li>
-      <a href="#"><i class="material-icons white-text white-item">settings</i>
-        <span class="white-text name">Configuración</span>
-      </a>
-    </li>
-    <li>
-      <a href="#"><i class="material-icons white-text white-item">arrow_back</i>
-        <span class="white-text name">Cerrar Sesión</span>
-      </a>
-    </li>
-
-    <!-- FIN DE LA PARTE INFERIOR DEL SIDEBAR -->
-
-  </ul>
-
-  <!-- FIN DE SIDEBAR -->
-
-  <!-- SECCION DE CONTENIDO -->
-
-  <main>
-    <section class="content">
-      {% block content %}
-
-      {% endblock %}
-    </section>
-  </main>
-
-  <!-- FIN DE LA SECCION DE CONTENIDO -->
-
-  <!-- FOOTER -->
-
-  <footer class="page-footer">
-    <div class="footer-copyright">
-      <div class="container">
-        <span class="white-text">
-          Ingeniería del Software II. Septiembre-Diciembre 2018
-        </span>
-
-      </div>
+            <!-- Links -->
+            <div class="collapse navbar-collapse justify-content-end" id="nav-content">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        {% if user.is_superuser %}
+                            <a href="{% url 'signup' %}">Sign Up</a>
+                        {% else %}
+                            <a href="{% url 'login' %}">Log In </a>
+                        {% endif %}
+                    </li>
+                 </ul>
+            </div>
+        </nav>
     </div>
-  </footer>
 
-  <!-- FIN DEL FOOTER -->
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-  <!-- COMIENZO DEL JS -->
+   <div class="page-wrapper chiller-theme toggled">
+        <nav id="sidebar" class="sidebar-wrapper">
+            <div class="sidebar-content">
+                <div id="toggle-sidebar">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="sidebar-brand">
+                    <a href="#">EIA</a>
+                </div>
+                <div class="sidebar-header">
+                    <div class="user-pic">
+                        <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/bootstrap4/assets/img/user.jpg" alt="User picture">
+                    </div>
+                    <div class="user-info">
+                        <span class="user-name">
+                            <strong>Bienvenido</strong>
+                        </span>
+                        <span class="user-role">
+                            <strong>Usuario</strong>
+                        </span>
+                    </div>
+                </div>
+                <!-- sidebar-header  -->
 
-  {% block js %}
-  {% endblock %}
+                <!-- sidebar-search  -->
+                <div class="sidebar-menu">
+                    <ul>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="fa fa-home" style="font-size:24px"></i
+                                <span>
+                                    <strong>Home</strong>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="fa fa-calculator" style="font-size:24px"></i>
+                                <span>
+                                    <strong>Calculadora</strong>
+                                </span>
+                            </a>
 
-  <!-- FIN DEL JS -->
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="fa fa-cog" style="font-size:24px"></i>
+                                <span>
+                                    <strong>Configuración</strong>
+                                </span>
+                            </a>
+
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="fa fa-sign-out" style="font-size:24px"></i>
+                                <span>
+                                    <strong>Cerrar sesión</strong>
+                                </span>
+                            </a>
+                        </li>
+                </div>
+                <!-- sidebar-menu  -->
+            </div>
+            <!-- sidebar-content  -->
+            <div class="sidebar-footer">
+
+            </div>
+        </nav>
+
+        {% block content %}
+       {% endblock %}
+    <!-- page-content" -->
+
+    </div>
+
+
 
 </body>
-
+ <footer class="page-footer">
+        <div class="footer-copyright">
+          <div class="container text-white">
+            <span class="white-text">
+              Ingeniería del Software II. Septiembre-Diciembre 2018
+            </span>
+          </div>
+        </div>
+    </footer>
 </html>
-
-

@@ -1,13 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
+
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    {% if user.is_superuser %}
-        <p><a href="{% url 'signup' %}">Sign Up</a></p>
-    {% else %}
-        <p><a href="{% url 'login' %}">Log In </a></p>
-    {% endif %}
+
 {% endblock %}
 
 
