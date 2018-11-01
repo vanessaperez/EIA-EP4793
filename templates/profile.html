@@ -7,7 +7,7 @@
         <h3>Usuario: {{ user.first_name }} {{ user.last_name }}</h3>
         <h3>Correo: {{ user.email}}</h3>
         <h3>Documento de Identidad: {{ user.doc_identidad}}</h3>
-        <p><a href="{% url 'edit_user' %}">Edit User</a></p>
+        <p><a href="{% url 'edit_user' pk=user.pk %}">Edit User</a></p>
         <p><a href="{% url 'logout' %}">Log out</a></p>
     </div>
 
