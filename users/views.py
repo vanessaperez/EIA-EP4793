@@ -9,6 +9,9 @@ from django.contrib.auth.decorators import login_required
 class HomePageView(TemplateView):
     template_name = 'home.html'
 
+class LoginView(TemplateView):
+	template_name = 'registration/login.html'
+
 
 def signup(request):
     if request.method == 'POST':
