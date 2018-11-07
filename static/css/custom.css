@@ -557,6 +557,10 @@ a, a:hover{
 }
 .login{
   margin-top: 100px;
-  padding-left: 400px;
+  padding-left: 210px;
 }
 
+.user, .signup{
+  margin-top: 100px;
+  padding-left: 450px;
+}
