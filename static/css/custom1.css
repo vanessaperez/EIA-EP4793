@@ -197,3 +197,13 @@ a.article:hover {
     background: #699327;
 
 }
+
+.login{
+    padding-top: 50px;
+    padding-left: 90px;
+}
+
+.user, .signup{
+  margin-top: 50px;
+  padding-left: 140px;
+}
