@@ -31,3 +31,5 @@ class CustomUserChangeForm(UserChangeForm):
             'email': _('Correo'),
             'doc_identidad': _('Documento Identidad')
         }
+
+

@@ -23,7 +23,6 @@ class DatosSolicitante(models.Model):
 
 
 class DatosOrganizacion(models.Model):
-
     nombre = models.CharField(max_length=60)
     razon_social = forms.ChoiceField(choices=RAZON_CHOICES, widget=forms.RadioSelect())
     rif = models.CharField(max_length=30)
@@ -31,4 +30,6 @@ class DatosOrganizacion(models.Model):
     representante_legal = models.CharField(max_length=130)
     telefono = models.CharField(max_length=30)
     email = models.CharField(max_length=30)
+
+#class DatosEspacio(models.Model):
 

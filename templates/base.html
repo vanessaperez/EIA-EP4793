@@ -1,146 +1,93 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
-    <script src="file.js"></script>
+<html>
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <script src="{% static 'javascript/show.js' %}"></script>
     <title>{% block title %}EIA{% endblock title %}</title>
+
 </head>
+
 <body>
 
-    <div class="container-fluid p-0">
-        <nav class="navbar navbar-expand-sm navbar-light bg-faded">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-content" aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!-- Links -->
-            <div class="collapse navbar-collapse justify-content-end" id="nav-content">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        {% if user.is_superuser %}
-                            <a href="{% url 'signup' %}">Sign Up</a>
-                        {% else %}
-                            <a href="{% url 'login' %}">Log In </a>
-                        {% endif %}
-                    </li>
-                 </ul>
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <img class="circle rounded-circle" src="{% static 'img/environment.jpg' %}">
             </div>
-        </nav>
-    </div>
 
-
-
-   <div class="page-wrapper chiller-theme toggled">
-        <nav id="sidebar" class="sidebar-wrapper">
-            <div class="sidebar-content">
-                <div id="toggle-sidebar">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-                <div class="sidebar-brand">
-                    <a href="#">EIA</a>
-                </div>
-                <div class="sidebar-header">
-                    <div class="user-pic">
-                        <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/bootstrap4/assets/img/user.jpg" alt="User picture">
-                    </div>
-                    <div class="user-info">
-                        <span class="user-name">
-                            <strong>Bienvenido</strong>
-                        </span>
-                        <span class="user-role">
-                            <strong>Usuario</strong>
-                        </span>
-                    </div>
-                </div>
-                <!-- sidebar-header  -->
-
-                <!-- sidebar-search  -->
-                <div class="sidebar-menu">
-                    <ul>
-                        <li class="sidebar-dropdown">
-                            <a href="#">                                
-                                <i class="fa fa-home" style="font-size:24px"></i>
-                                <span>
-                                    <strong>Home</strong>
-                                </span>
-                            </a>
+            <ul class="list-unstyled components">
+                <p>&nbsp; Bienvenido {{ user.first_name }}</p>
+                 <li>
+                    <a href="#" class="home""><i class="fas fa-home fa-fw"></i>&nbsp; Home</a>
+                </li>
+                <li>
+                    {% if user.is_superuser %}
+                        <a href="{% url 'signup' %}"><i class="fas fa-users fa-fw"></i>&nbsp; Registrar Usuarios</a>
+                    {% endif %}
+                </li>
+                 <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-file-alt fa-fw"></i>&nbsp; Documentos</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            {% if not user.is_superuser %}
+                            <a href="{% url 'datos_proyecto' %}"><i class="fas fa-plus-circle fa-fw"></i>&nbsp; Crear</a>
+                            {% endif %}
                         </li>
-                        <li class="sidebar-dropdown">
-                            <a href="#">
-                                <i class="fa fa-calculator" style="font-size:24px"></i>
-                                <span>
-                                    <strong>Calculadora</strong>
-                                </span>
-                            </a>
+                        <li>
+                            <a href="#"><i class="fas fa-search fa-fw"></i>&nbsp; Buscar</a>
                         </li>
-                        <li class="sidebar-dropdown">
-                            <a href="#">
-                                <i class="fa fa-cog" style="font-size:24px"></i>
-                                <span>
-                                    <strong>Configuración</strong>
-                                </span>
-                            </a>
-                        </li>
-                        {% if user.is_superuser %}
-                        <li class="sidebar-dropdown">
-                            <a href="{% url 'signup' %}">
-                                <i class="fa fa-address-card" style="font-size:24px"></i>
-                                <span>
-                                    <strong>Registrar usuarios</strong>
-                                </span>
-                            </a>
-                        </li>
-                        {% endif %}
-                        <li class="sidebar-dropdown">
-                            <a href="{% url 'datos_proyecto' %}">
-                                <i class="fa fa-file-text-o" aria-hidden="true" style="font-size:24px"></i>
-                                <span>
-                                    <strong>Documentos</strong>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="sidebar-dropdown">
-                            <a href="#">
-                                <i class="fa fa-sign-out" style="font-size:24px"></i>
-                                <span>
-                                    <strong>Cerrar sesión</strong>
-                                </span>
-                            </a>
-                        </li>
-                </div>
-                <!-- sidebar-menu  -->
-            </div>
-            <!-- sidebar-content  -->
-            <div class="sidebar-footer">
-
-            </div>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fas fa-cog fa-fw"></i>&nbsp; Configuración</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fas fa-user-alt fa-fw"></i>&nbsp; Consultor ambiental</a>
+                </li>
+                 <li>
+                    <a href="{% url 'login' %}"><i class="fas fa-sign-out-alt fa-fw"></i>&nbsp; Cerrar Sesión</a>
+                </li>
+            </ul>
         </nav>
 
-        {% block content %}
-        {% endblock %}
-    <!-- page-content" -->
-
+        <!-- Page Content  -->
+        <div id="content">
+                <div class="container-fluid">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+        </div>
     </div>
 
-
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
 </body>
- <footer class="page-footer">
-        <div class="footer-copyright">
-          <div class="container text-white">
-            <span class="white-text">
-              Ingeniería del Software II. Septiembre-Diciembre 2018
-            </span>
-          </div>
-        </div>
-    </footer>
+
 </html>
