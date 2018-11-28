@@ -4,3 +4,4 @@ from .models import *
 admin.site.register(DatosProyecto)
 admin.site.register(DatosSolicitante)
 admin.site.register(DatosOrganizacion)
+admin.site.register(DatosEspacio)

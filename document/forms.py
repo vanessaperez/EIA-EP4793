@@ -1,6 +1,19 @@
 from django import forms
 from .models import *
 
+RAZON_CHOICES = (
+    ('pnatural', 'Natural'),
+    ('pjuridica', 'Juridica'),
+)
+
+tierra_choices = (
+            ('propia', 'Propia'),
+            ('inti', 'I.N.T.I'),
+            ('arrendada', 'Arrendada'),
+            ('prestada', 'Prestada'),
+)
+
+
 class DatosProyectoForm(forms.ModelForm):
 
     class Meta:
@@ -27,10 +40,16 @@ class SolicitanteForm(forms.ModelForm):
         }
 
 class OrganizacionForm(forms.ModelForm):
-    razon_social = forms.ChoiceField(choices=RAZON_CHOICES, widget=forms.RadioSelect())
+
     class Meta:
+
         model = DatosOrganizacion
         fields = ('razon_social', 'nombre', 'rif', 'dir_oficina', 'representante_legal', 'telefono', 'email')
+
+        widgets = {
+            'razon_social': forms.RadioSelect(choices=RAZON_CHOICES)
+        }
+
         labels = {
             'razon_social': 'Razón Social',
             'nombre': 'Nombre',
@@ -41,3 +60,39 @@ class OrganizacionForm(forms.ModelForm):
             'email': 'E-mail'
         }
 
+class DatosEspacioForm(forms.ModelForm):
+
+    class Meta:
+
+        model = DatosEspacio
+        fields = ('tenencia_tierra', 'ubicacion')
+        widgets = {
+            'tenencia_tierra': forms.RadioSelect(choices=tierra_choices)
+        }
+
+        labels = {
+            'tenencia_tierra': 'Tenencia de la Tierra',
+            'ubicacion': 'Ubicación'
+        }
+
+class DatosLinderoForm(forms.ModelForm):
+    class Meta:
+        model = DatosLindero
+        fields = ('lindero_norte', 'lindero_sur', 'lindero_este', 'lindero_oeste')
+        labels = {
+            'lindero_norte': 'Norte',
+            'lindero_sur': 'Sur',
+            'lindero_este': 'Este',
+            'lindero_oeste': 'Oeste'
+        }
+
+class DatosCoordenadasForm(forms.ModelForm):
+    class Meta:
+        model = DatosCoordenadas
+        fields = ('coor_norte', 'coor_sur','coor_este','coor_oeste')
+        labels = {
+            'coor_norte': 'Norte',
+            'coor_sur': 'Sur',
+            'coor_este': 'Este',
+            'coor_oeste': 'Oeste'
+        }

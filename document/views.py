@@ -8,7 +8,12 @@ def datos_proyecto(request):
         form = DatosProyectoForm(request.POST)
         form1 = SolicitanteForm(request.POST)
         form2 = OrganizacionForm(request.POST)
-        arrayform = [form, form1, form2]
+        form3 = DatosEspacioForm(request.POST)
+        form4 = DatosLindero(request.POST)
+        form5 = DatosCoordenadas(request.POST)
+        arrayform = [
+            form, form1, form2, form3, form4, form5
+        ]
 
         for array in arrayform:
             if array.is_valid():
@@ -19,14 +24,28 @@ def datos_proyecto(request):
                 document1.nombre = form1.cleaned_data['nombre']
                 document1.save()
                 document2 = form2.save(commit=False)
-                document2.nombre1 = form2.cleaned_data['nombre']
+                document2.nombre = form2.cleaned_data['nombre']
                 document2.save()
-                return redirect('user_views.profile')
+                document3 = form3.save(commit=False)
+                document3.tenencia_tierra = form3.cleaned_data['tenencia_tierra']
+                document3.save()
+                form4.save()
+                form5.save()
+                #return redirect('users/profile/')
     else:
         form = DatosProyectoForm()
         form1 = SolicitanteForm()
         form2 = OrganizacionForm()
-    return render(request, 'datos_proyecto/datos_proyecto.html', {'form': form, 'form1': form1, 'form2': form2})
+        form3 = DatosEspacioForm()
+        form4 = DatosLinderoForm()
+        form5 = DatosCoordenadasForm()
+    return render(request, 'datos_proyecto/datos_proyecto.html',
+                  {'form': form,
+                   'form1': form1,
+                   'form2': form2,
+                   'form3': form3,
+                   'form4': form4,
+                   'form5': form5})
 
 
 
