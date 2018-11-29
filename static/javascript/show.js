@@ -28,7 +28,7 @@ function next(){
     if(active+1<limite_partes){
         active+=1;
     }
-
+    window.scrollTo(0,0)
     on_off();
 }
 
@@ -37,6 +37,7 @@ function prev(){
         active-=1
     }
     on_off();
+    window.scrollTo(0,0)
 }
 
 

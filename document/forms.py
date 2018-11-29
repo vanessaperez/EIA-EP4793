@@ -1,4 +1,6 @@
 from django import forms
+from django.forms import TextInput
+
 from .models import *
 from crispy_forms.helper import FormHelper, Layout
 
@@ -162,6 +164,10 @@ class SueloForm(forms.ModelForm):
             'homo_comentario': 'Comentario',
             'textura_atributo':'Atributo',
             'textura_comentario': 'Comentario'
+        }
+
+        widgets = {
+            'caracteristicas': TextInput(attrs={'placeholder': 'Sistema Edafológico'}),
         }
 
 class AguaForm(forms.ModelForm):
