@@ -1,0 +1,341 @@
+{% extends 'base.html' %}
+
+{% load tags %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery=1%}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+{% load static %}
+{% block extracss %}
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+{% endblock extracss %}
+{% block content %}
+
+<style>
+  #message {
+    color: #ff0000;
+  }
+  #message1 {
+    color: #ff0000;
+  }
+  #message2 {
+    color: #ff0000;
+  }
+</style>
+
+<!-- Page header -->
+        <div class="page-header page-header-default">
+          <div class="page-header-content">
+            <div class="page-title">
+              <h4><i class="icon-file-text position-left"></i> <span class="text-semibold">Documentos de intención</h4>
+            </div>
+
+
+        </div>
+        <!-- /page header -->
+
+
+        <!-- Content area -->
+        <div class="content">
+
+          <!-- Main charts -->
+          <div class="row">
+            <div class="col-lg-12">
+
+              <!-- Traffic sources -->
+              <div class="panel panel-flat" style="padding:10px;">
+                <div class="panel-heading" style="background-color: #d3cafd; text-align: center;">
+                  <h6 class="panel-title">Documentos de intención</h6>
+                  <div class="heading-elements">
+                    <ul class="breadcrumb-elements">
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                          <i class="icon-gear position-left"></i>
+                          Acciones
+                          <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                          <li id="editar-doc"><a><i class="icon-file-text"></i>Editar</a></li>
+                          {% if user.is_superuser %}
+                          <li id="eliminar-doc"><a><i class="icon-file-text"></i>Eliminar</a></li>
+                          {% endif %}
+                        </ul>
+                      </li>
+                    </ul>
+                    <ul class="icons-list">
+                      <li><a data-action="reload"></a></li>
+                    </ul>
+                  </div>
+                </div>
+
+
+                <div>
+
+                    <!-- Page length options -->
+                <form id="form-doc-intencion" action="" method="post" role="form" class="form-horizontal form-group" enctype="multipart/form-data">
+                    <div class="panel panel-flat">
+                      <br>
+                      <div style="overflow-x:scroll; overflow-y:hidden;">
+                      <table id="example2" class="table">
+                        <thead>
+                          <tr>
+                          {% if user.is_superuser %}
+                          <th></th>
+                          {% endif %}
+                          <th>Nombre</th>
+                          <th>Apellido</th>
+                          <th>Fecha de creación</th>
+                          <th>Status</th>
+                          <th>Fecha de solicitud</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {% for doc in documentos %}
+                              <tr role="row">
+                                  {% csrf_token %}
+                                {% if user.is_superuser %}
+                                <td><input type="checkbox" id="{{doc.pk}}" name="seleccionado" value="{{doc.pk}}" class="checkbox"/></td>
+                                {%  endif %}
+                                <td> {{doc.solicitante.nombre}} </td>
+                                <td> {{doc.solicitante.apellido}} </td>
+                                <td> {{doc.fecha_creacion| date:"Y/m/d"}} </td>
+                                <td> {{doc.status}} </td>
+                                <td> {{doc.fecha_solicitud| date:"Y/m/d"}} </td>
+                              </tr>
+                        {% endfor %}
+                        </tbody>
+                      </table>
+                      </div>
+                    </div>
+                    <!-- /page length options -->
+
+              </div>
+              <!-- /traffic sources -->
+
+            </div>
+
+          <!-- MODAL CARGAR RECEPCION BANCO -->
+          <div id="myModal2" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content" style="z-index: 10;">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Subir recepción</h4>
+                </div>
+                <div class="modal-body">
+                  <input id="file" type="file" name="file" id=file_{{auto.pk}}>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" id="amortizar2">Subir</button>
+                  <button type="button" class="btn btn-default" id="close" data-dismiss="modal">Cerrar</button>
+                </div>
+                <div class="modal-footer">
+                  <span class="message" id="message" style="text-align: center; display: none;"></span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          </form>
+
+          </div>
+          <!-- /main charts -->
+
+        </div>
+        <!-- /content area -->
+{% endblock content %}
+
+{% block custom_script %}
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="{% static 'js/jquery.mask.min.js' %}"></script>
+<script src="{% static 'js/jquery.mask2.min.js' %}"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<script src="{% static 'plugins/datepicker/locales/bootstrap-datepicker.es.js' %}"></script>
+<script src="{% static 'js/dataTables.fixedColumns.min.js' %}"></script>
+<!--Librerias para exportar Datatables -->
+<script type="text/javascript" src="https://cdn.datatables.net/tabletools/2.2.4/js/dataTables.tableTools.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.1.2/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.1.2/js/buttons.flash.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+<script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.1.2/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.1.2/js/buttons.print.min.js"></script>
+<script type="text/javascript">
+  $(".datepicker").datepicker();
+  var tables = $('#example2').DataTable(
+    {
+        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]] ,
+        "ordering": true,
+        iDisplayLength: -1,
+        "bStateSave": true,
+        "iCookieDuration": 60*60*24,
+        "scrollX": true,
+        "scrollY":        "500px",
+        "scrollCollapse": true,
+        dom: 'lBfrtip',
+        buttons: [
+            {
+                  extend: 'excel',
+                  title: "Documentos de intención",
+              },
+          ],
+        "aaSorting": [[2, 'asc']],
+        columnDefs: [
+              { width: "10%", targets: 0 }
+            ]
+
+    });
+
+
+  var banco = [];
+  //Funcion que no deja escoger mas de una carta
+  //$(".checkbox").change(function(){ 
+  //    if(this.checked){
+  //      if (banco.length == 0){
+  //        banco.push($(this).closest("tr").find('td:eq(5)').text());
+  //      }
+  //      else{
+  //        alert("No puedes seleccionar más de una carta.");
+  //        $(this).prop('checked', false);
+  //      }
+  //    }else{
+  //      banco = [];
+  //    }
+  //});
+
+  // Oculto amortizar si no estoy en el estdo adecuado
+  $(".checkbox").change(function(){ 
+      if(this.checked){
+        if (banco.length == 0){
+          banco.push($(this).closest("tr").find('td:eq(5)').text());
+          console.log(banco[0]);
+          console.log(banco[0].length);
+          if (banco[0].trim() == "Emitir_carta_circulante") {
+            document.getElementById('amortizar').style.display="none";
+          } else {
+            document.getElementById('amortizar').style.display="block";
+          }
+        }
+        else{
+          alert("No puedes seleccionar más de una carta.");
+          $(this).prop('checked', false);
+        }
+      }else{
+        banco = [];
+      }
+  });
+
+  $(".odd").css('background-color', '#f8f7fa');
+  $(".dt-buttons").children().children().html('Descargar tabla');
+  $(".dt-buttons").children().children().addClass('dt-button-custom-class');
+  $(".dt-buttons").css('margin', '10px 0 20px 200px');
+  $(".dt-buttons").css('float', 'none');
+
+
+  // JS PARA MODAL UPLOAD RECEPCION
+  $("#recepcion").on('click', function(){
+    $("#myModal2").modal('show');
+  });
+
+  // JS PARA MODAL CAMBIAR STATUS
+  $("#amortizar").on('click', function(){
+    $("#myModal3").modal('show');
+  });
+
+  // Si no elijo carta alguna, deshabilito opcion para hacer pdf
+  $("#new_pdf").on('click', function(){
+    $("#myModal4").modal('show');
+    var checkboxes = new Array();
+    $(".checkbox").each(function() {
+      console.log((this).checked);
+      //checkboxes.push($(this).is(':checked'));
+      checkboxes.push((this).checked);
+    });
+    console.log(checkboxes);
+
+    var vacio = checkboxes.every(elem => elem == false);
+    console.log(vacio);
+
+    if (vacio) {
+      document.getElementById("amortizar4").disabled = true;
+    } else {
+      document.getElementById("amortizar4").disabled = false;
+    };
+  });
+
+  // Limpio los checkboxes al llegar
+  $(document).ready(function() {
+    $(".checkbox").each(function() {
+      $(this).prop('checked', false);
+    });
+  });
+
+  // QUITO INLINE MESSAGE AL CERRAR EL MODAL
+  $("#close1").on('click', function(){
+    document.getElementById('message1').style.display="none";
+  });
+
+  // QUITO INLINE MESSAGE AL CERRAR EL MODAL
+  $("#close2").on('click', function(){
+    document.getElementById('message2').style.display="none";
+  });
+
+  // DEBE SELECCIONARSE UNA CARTA
+  $("#amortizar2").on('click', function(){
+    var checkboxes = new Array();
+    $(".checkbox").each(function() {
+      console.log((this).checked);
+      //checkboxes.push($(this).is(':checked'));
+      checkboxes.push((this).checked);
+    });
+    console.log(checkboxes);
+
+    var vacio = checkboxes.every(elem => elem == false);
+    console.log(vacio);
+
+    if (!(vacio)) {
+      $("#form-pignoracion").submit();
+    } else {
+      document.getElementById('message').style.display="block";
+      document.getElementById('message').innerHTML="Debe seleccionar una carta.";
+    };
+  });
+
+  // DEBE SELECCIONARSE UNA CARTA
+  $("#amortizar3").on('click', function(){
+    var checkboxes = new Array();
+    $(".checkbox").each(function() {
+      console.log((this).checked);
+      //checkboxes.push($(this).is(':checked'));
+      checkboxes.push((this).checked);
+    });
+    console.log(checkboxes);
+
+    var vacio = checkboxes.every(elem => elem == false);
+    console.log(vacio);
+
+    if (!(vacio)) {
+      $("#form-pignoracion").submit();
+    } else {
+      document.getElementById('message1').style.display="block";
+      document.getElementById('message1').innerHTML="Debe seleccionar una carta.";
+    };
+  });
+
+  // QUITO INLINE MESSAGE AL CERRAR EL MODAL
+  $("#close").on('click', function(){
+    document.getElementById('message').style.display="none";
+    //$("#myModal1").modal('show');
+  });
+
+</script>
+
+{% endblock custom_script %}

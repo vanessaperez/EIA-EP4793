@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .forms import *
 from django.shortcuts import redirect
+from django.contrib.auth.models import User
 
 def datos_proyecto(request):
 
@@ -121,3 +122,17 @@ def datos_organizacion(request):
     return render(request, 'datos_proyecto/datos_proyecto.html', {'form': form2})
 
 '''
+
+def documentos_intencion(request):
+
+    if request.method == 'GET':
+        # Para admins muestro todos los documentos de intencion
+        if request.user.is_superuser:
+            documentos = DatosProyecto.objects.all()
+        # Para usuarios solicitantes, muestro solo SUS solicitudes
+        else:
+            documentos = DatosProyecto.objects.get(solicitante__cedula=request.user.doc_identidad)
+
+        context = {}
+        context['documentos'] = documentos
+        return context
