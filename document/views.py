@@ -3,6 +3,9 @@ from .forms import *
 from django.forms.formsets import formset_factory
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
+from django.views.generic import View
+from django.template import RequestContext, Context
+from django.views.generic import TemplateView
 
 def datos_proyecto(request):
 
@@ -173,16 +176,29 @@ def datos_organizacion(request):
 
 '''
 
-def documentos_intencion(request):
+#def documentos_intencion(request):
+#
+#    if request.method == 'GET':
+#        # Para admins muestro todos los documentos de intencion
+#        #if request.user.is_superuser:
+#        documentos = DatosProyecto.objects.all()
+#        # Para usuarios solicitantes, muestro solo SUS solicitudes
+#        #else:
+#        #    documentos = DatosProyecto.objects.get(solicitante__cedula=request.user.doc_identidad)
 
-    if request.method == 'GET':
-        # Para admins muestro todos los documentos de intencion
-        if request.user.is_superuser:
-            documentos = DatosProyecto.objects.all()
-        # Para usuarios solicitantes, muestro solo SUS solicitudes
-        else:
-            documentos = DatosProyecto.objects.get(solicitante__cedula=request.user.doc_identidad)
+#        context = {}
+#        context['documentos'] = documentos
+#        return context
 
-        context = {}
+class DocumentosIntencion(TemplateView):
+    template_name = 'datos_proyecto/documentos_intencion.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(DocumentosIntencion, self).get_context_data(**kwargs)
+
+        documentos = DatosProyecto.objects.all()
+        
         context['documentos'] = documentos
+
         return context
+

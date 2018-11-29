@@ -171,4 +171,3 @@ class DatosProyecto(models.Model):
     forestal = models.ForeignKey(Forestal, null=False, on_delete=models.CASCADE)
     flora = models.ForeignKey(Flora, null=False, on_delete=models.CASCADE)
     fauna = models.ForeignKey(Fauna, null=False, on_delete=models.CASCADE)
-

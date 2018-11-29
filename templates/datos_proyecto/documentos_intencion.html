@@ -1,13 +1,12 @@
 {% extends 'base.html' %}
 
-{% load tags %}
+{# Load the tag library #}
+{% load bootstrap3 %}
 
 {# Load CSS and JavaScript #}
 {% bootstrap_css %}
 {% bootstrap_javascript jquery=1%}
 
-{# Display django.contrib.messages as Bootstrap alerts #}
-{% bootstrap_messages %}
 {% load static %}
 {% block extracss %}
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -89,22 +88,20 @@
                           <th>Apellido</th>
                           <th>Fecha de creación</th>
                           <th>Status</th>
-                          <th>Fecha de solicitud</th>
                           </tr>
                         </thead>
                         <tbody>
                         {% for doc in documentos %}
-                              <tr role="row">
-                                  {% csrf_token %}
-                                {% if user.is_superuser %}
-                                <td><input type="checkbox" id="{{doc.pk}}" name="seleccionado" value="{{doc.pk}}" class="checkbox"/></td>
-                                {%  endif %}
-                                <td> {{doc.solicitante.nombre}} </td>
-                                <td> {{doc.solicitante.apellido}} </td>
-                                <td> {{doc.fecha_creacion| date:"Y/m/d"}} </td>
-                                <td> {{doc.status}} </td>
-                                <td> {{doc.fecha_solicitud| date:"Y/m/d"}} </td>
-                              </tr>
+                          <tr role="row">
+                              {% csrf_token %}
+                            {% if user.is_superuser %}
+                            <td><input type="checkbox" id="{{doc.pk}}" name="seleccionado" value="{{doc.pk}}" class="checkbox"/></td>
+                            {%  endif %}
+                            <td> {{doc.solicitante.nombre}} </td>
+                            <td> {{doc.solicitante.apellido}} </td>
+                            <td> {{doc.d_documento.fecha| date:"Y/m/d"}} </td>
+                            <td> {{doc.status}} </td>
+                          </tr>
                         {% endfor %}
                         </tbody>
                       </table>
