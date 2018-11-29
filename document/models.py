@@ -2,24 +2,6 @@ from django.db import models
 from django import forms
 
 
-class DatosProyecto(models.Model):
-    titulo = models.CharField(max_length=130)
-    ubicacion = models.CharField(max_length=130)
-    area = models.CharField(max_length=130)
-    tipo = models.CharField(max_length=130)
-    status = models.CharField(max_length=20)
-    solicitante = models.ForeignKey(DatosSolicitante, null=True, default=None)
-    organizacion = models.ForeignKey(DatosOrganizacion, null=True, default=None)
-    d_espacio = models.ForeignKey(DatosEspacio, null=True, default=None)
-    d_personal = models.ForeignKey(DatosPersonal, null=True, default=None)
-    d_documento = models.ForeignKey(DatosDocumento, null=True, default=None)
-    descripcion_proy = models.ForeignKey(DescripcionProyecto, null=True, default=None)
-    suelo = models.ForeignKey(Suelo, null=True, default=None)
-    agua = models.ForeignKey(Agua, null=True, default=None)
-    aire = models.ForeignKey(Aire, null=True, default=None)
-
-
-
 class DatosSolicitante(models.Model):
     nombre = models.CharField(max_length=30)
     apellido = models.CharField(max_length=30)
@@ -131,3 +113,19 @@ class Aire(models.Model):
     temp_comentario = models.CharField(max_length=100)
     vientos_atributo = models.CharField(max_length=100)
     vientos_comentario = models.CharField(max_length=100)
+
+class DatosProyecto(models.Model):
+    titulo = models.CharField(max_length=130)
+    ubicacion = models.CharField(max_length=130)
+    area = models.CharField(max_length=130)
+    tipo = models.CharField(max_length=130)
+    status = models.CharField(max_length=20)
+    solicitante = models.ForeignKey(DatosSolicitante, null=False, on_delete=models.CASCADE)
+    organizacion = models.ForeignKey(DatosOrganizacion, null=False, on_delete=models.CASCADE)
+    d_espacio = models.ForeignKey(DatosEspacio, null=False, on_delete=models.CASCADE)
+    d_personal = models.ForeignKey(DatosPersonal, null=False, on_delete=models.CASCADE)
+    d_documento = models.ForeignKey(DatosDocumento, null=False, on_delete=models.CASCADE)
+    descripcion_proy = models.ForeignKey(DescripcionProyecto, null=False, on_delete=models.CASCADE)
+    suelo = models.ForeignKey(Suelo, null=False, on_delete=models.CASCADE)
+    agua = models.ForeignKey(Agua, null=False, on_delete=models.CASCADE)
+    aire = models.ForeignKey(Aire, null=False, on_delete=models.CASCADE)
