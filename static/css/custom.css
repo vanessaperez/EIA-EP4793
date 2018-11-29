@@ -210,5 +210,20 @@ a.article:hover {
 
 .ocultar{
     display:none
+}
+
+.margen{
+    margin-top: 50px;
+    padding-left: 140px;
+}
+
+.table{
+    table-layout: fixed;
+    width: 100%;
+    max-width: 100%;
+
+}
+
+.espacio{
 
 }

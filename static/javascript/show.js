@@ -1,5 +1,5 @@
 var active = 0; //Comienza en 0, es decir 0 es la primera parte
-var limite_partes = 4; //Si el limite es 2 partes, la ultima parte sera la parte 1
+var limite_partes = 10; //Si el limite es 2 partes, la ultima parte sera la parte 1
 var prefijo = "Parte_"
 
 function select_elemento(parte){
@@ -38,3 +38,5 @@ function prev(){
     }
     on_off();
 }
+
+

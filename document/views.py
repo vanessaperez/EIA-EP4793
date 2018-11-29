@@ -1,18 +1,27 @@
 from django.shortcuts import render
 from .forms import *
+from django.forms.formsets import formset_factory
 from django.shortcuts import redirect
 
 def datos_proyecto(request):
 
+    #MediofisicoFormset = formset_factory(MedioFisicoForm, extra=2)
     if request.method == 'POST':
         form = DatosProyectoForm(request.POST)
         form1 = SolicitanteForm(request.POST)
         form2 = OrganizacionForm(request.POST)
         form3 = DatosEspacioForm(request.POST)
-        form4 = DatosLindero(request.POST)
-        form5 = DatosCoordenadas(request.POST)
+        form4 = DatosPersonal(request.POST)
+        form5 = DatosDocumento(request.POST)
+        form6 = DescripcionProyecto(request.POST, request.FILES)
+        form7 = Suelo(request.POST)
+        form8 = Agua(request.POST)
+        form9 = Aire(request.POST)
+        #formset = MediofisicoFormset(request.POST)
+
         arrayform = [
-            form, form1, form2, form3, form4, form5
+            form, form1, form2, form3, form4,
+            form5, form6, form7, form8, form9
         ]
 
         for array in arrayform:
@@ -29,23 +38,44 @@ def datos_proyecto(request):
                 document3 = form3.save(commit=False)
                 document3.tenencia_tierra = form3.cleaned_data['tenencia_tierra']
                 document3.save()
-                form4.save()
-                form5.save()
+                document4 = form4.save(commit=False)
+                document4.nombre_eia = form4.cleaned_data['nombre_eia']
+                document4.save()
+                document5 = form5.save(commit=False)
+                document5.ciudad = form5.cleaned_data['ciudad']
+                document5.save()
+                document6 = form6.save(commit=False)
+                document6.objetivo_general = form6.cleaned_data['objetivo_general']
+                document6.save()
+                form7.save()
+                form8.save()
+                form9.save()
+                #formset.save()
                 #return redirect('users/profile/')
     else:
         form = DatosProyectoForm()
         form1 = SolicitanteForm()
         form2 = OrganizacionForm()
         form3 = DatosEspacioForm()
-        form4 = DatosLinderoForm()
-        form5 = DatosCoordenadasForm()
+        form4 = DatosPersonalForm()
+        form5 = DatosDocumentoForm()
+        form6 = DescripcionProyectoForm()
+        form7 = SueloForm()
+        form8 = AguaForm()
+        form9 = AireForm()
+        #formset = MediofisicoFormset()
     return render(request, 'datos_proyecto/datos_proyecto.html',
                   {'form': form,
                    'form1': form1,
                    'form2': form2,
                    'form3': form3,
                    'form4': form4,
-                   'form5': form5})
+                   'form5': form5,
+                   'form6': form6,
+                   'form7': form7,
+                   'form8': form8,
+                   'form9': form9
+                   })
 
 
 
