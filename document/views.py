@@ -21,11 +21,17 @@ def datos_proyecto(request):
         form7 = Suelo(request.POST)
         form8 = Agua(request.POST)
         form9 = Aire(request.POST)
+        form10 = ConclusionFisico(request.POST)
+        form11 = Forestal(request.POST)
+        form12 = Flora(request.POST)
+        form13 = Fauna(request.POST)
+        form14 = ConclusionBiologico(request.POST)
         #formset = MediofisicoFormset(request.POST)
 
         arrayform = [
             form, form1, form2, form3, form4,
-            form5, form6, form7, form8, form9
+            form5, form6, form7, form8, form9,
+            form10, form11, form12, form13, form14
         ]
 
         for array in arrayform:
@@ -54,8 +60,12 @@ def datos_proyecto(request):
                 form7.save()
                 form8.save()
                 form9.save()
-                #formset.save()
-                #return redirect('users/profile/')
+                form10.save()
+                form11.save()
+                form12.save()
+                form13.save()
+                form14.save()
+                return redirect('documentos_intencion/')
     else:
         form = DatosProyectoForm()
         form1 = SolicitanteForm()
@@ -67,19 +77,29 @@ def datos_proyecto(request):
         form7 = SueloForm()
         form8 = AguaForm()
         form9 = AireForm()
+        form10 = ConclusionFisicoForm()
+        form11 = ForestalForm()
+        form12 = FloraForm()
+        form13 = FaunaForm()
+        form14 = ConclusionBiologicoForm()
+        contexto = {'form': form,
+                    'form1': form1,
+                    'form2': form2,
+                    'form3': form3,
+                    'form4': form4,
+                    'form5': form5,
+                    'form6': form6,
+                    'form7': form7,
+                    'form8': form8,
+                    'form9': form9,
+                    'form10': form10,
+                    'form11': form11,
+                    'form12': form12,
+                    'form13': form13,
+                    'form14': form14
+                   }
         #formset = MediofisicoFormset()
-    return render(request, 'datos_proyecto/datos_proyecto.html',
-                  {'form': form,
-                   'form1': form1,
-                   'form2': form2,
-                   'form3': form3,
-                   'form4': form4,
-                   'form5': form5,
-                   'form6': form6,
-                   'form7': form7,
-                   'form8': form8,
-                   'form9': form9
-                   })
+    return render(request, 'datos_proyecto/datos_proyecto.html', contexto)
 
 
 
