@@ -5,8 +5,9 @@
 
 {% block content %}
 
-
-    <div class="row justify-content-center" id="Parte_0">
+        <button class="btn btn-primary" style="margin-left: 225px" onclick="prev()" id="espacio">Anterior</button>
+        <button class="btn btn-primary" style="margin-left: 280px" onclick="next()">Siguiente</button>
+    <div class="row justify-content-md-center" id="Parte_0">
         <div class="signup">
             <h2>Datos Generales del Proyecto</h2>
             <form method="post">
@@ -19,7 +20,7 @@
     </div>
 
 
-    <div class="row justify-content-center ocultar" id="Parte_1">
+    <div class="row justify-content-md-center ocultar" id="Parte_1">
         <div class="signup">
             <h2>Datos del Solicitante o Promotor</h2>
 
@@ -31,7 +32,7 @@
         <div class="col-2"></div>
     </div>
 
-     <div class="row justify-content-center ocultar" id="Parte_2">
+     <div class="row justify-content-md-center ocultar" id="Parte_2">
         <div class="signup">
             <h2>Datos de La Organización</h2>
 
@@ -43,7 +44,7 @@
         <div class="col-2"></div>
     </div>
 
-     <div class="row justify-content-center ocultar" id="Parte_3">
+     <div class="row justify-content-md-center ocultar" id="Parte_3">
         <div class="signup">
             <h2 align="center">Datos del Espacio o Área donde </h2>
             <h2 align="center"> se ejecutará el Proyecto </h2>
@@ -71,7 +72,7 @@
         <div class="col-2"></div>
     </div>
 
-    <div class="row justify-content-center ocultar" id="Parte_4">
+    <div class="row justify-content-md-center ocultar" id="Parte_4">
         <div class="signup">
             <h2>Datos del Personal Responsable del Estudio</h2>
             <h2 align="center">de Impacto Ambiental </h2>
@@ -134,7 +135,7 @@
         <div class="col-2"></div>
     </div>
 
-     <div class="row justify-content-center ocultar" id="Parte_5">
+     <div class="row justify-content-md-center ocultar" id="Parte_5">
         <div class="signup">
             <h2>Datos de la elaboración</h2>
             <h2>del presente documento</h2>
@@ -147,7 +148,7 @@
         <div class="col-2"></div>
     </div>
 
-     <div class="row justify-content-center ocultar" id="Parte_6">
+     <div class="row justify-content-md-center ocultar" id="Parte_6">
         <div class="signup">
             <h2>Descripción del Proyecto</h2>
             <h3>Objetivos del Estudio de Impacto Ambiental</h3>
@@ -160,7 +161,7 @@
         <div class="col-2"></div>
     </div>
 
-     <div class="row justify-content-center ocultar" id="Parte_7">
+     <div class="row justify-content-md-center ocultar" id="Parte_7">
         <div class="signup">
             <h2>Caracterización Ambiental</h2>
             <h3 align="center">Medio Físico</h3>
@@ -195,7 +196,7 @@
         <div class="col-2"></div>
     </div>
 
-     <div class="row justify-content-center ocultar" id="Parte_8">
+     <div class="row justify-content-md-center ocultar" id="Parte_8">
         <div class="signup">
             <h2>Caracterización Ambiental</h2>
             <h3 align="center">Medio Físico</h3>
@@ -232,7 +233,7 @@
     </div>
 
 
-      <div class="row justify-content-center ocultar" id="Parte_9">
+      <div class="row justify-content-md-center ocultar" id="Parte_9">
         <div class="signup">
             <h2>Caracterización Ambiental</h2>
             <h3 align="center">Medio Físico</h3>
@@ -262,13 +263,148 @@
                 {{ form9.vientos_atributo|as_crispy_field }}
                 {{ form9.vientos_comentario|as_crispy_field }}
 
+        </div>
+        <div class="col-2"></div>
+    </div>
+
+    <div class="row justify-content-md-center ocultar" id="Parte_10">
+        <div class="signup">
+            <h2>Conclusiones del Medio Físico</h2>
+                {% csrf_token %}
+                {{ form10|crispy }}
+        </div>
+        <div class="col-2"></div>
+    </div>
+
+    <div class="row justify-content-md-center ocultar" id="Parte_11">
+        <div class="signup">
+            <h2>Caracterización Ambiental</h2>
+            <h3 align="center">Medio Biológico</h3>
+            <br>
+            <h3>Sistema Forestal</h3>
+                {% csrf_token %}
+                {{ form11.caracteristicas|as_crispy_field }}
+
+                 <hr>
+                 <br>
+
+                <h5>Especies Forestales</h5>
+                {{ form11.especies_atributo|as_crispy_field }}
+                {{ form11.especies_comentario|as_crispy_field }}
+
+                <hr>
+                <br>
+
+                <h5>Conservación de Especies</h5>
+                {{ form11.conservacion_atributo|as_crispy_field }}
+                {{ form11.conservacion_comentario|as_crispy_field }}
+
+                <hr>
+                <br>
+
+             <h5>Paisajes Forestales</h5>
+                {{ form11.paisaje_atributo|as_crispy_field }}
+                {{ form11.paisaje_comentario|as_crispy_field }}
+
+                <hr>
+                <br>
+
+            <h5>Bosques</h5>
+                {{ form11.bosque_atributo|as_crispy_field }}
+                {{ form11.bosque_comentario|as_crispy_field }}
+
+        </div>
+        <div class="col-2"></div>
+    </div>
+
+    <div class="row justify-content-md-center ocultar" id="Parte_12">
+        <div class="signup">
+            <h2>Caracterización Ambiental</h2>
+            <h3 align="center">Medio Biológico</h3>
+            <br>
+            <h3>Flora</h3>
+                {% csrf_token %}
+                {{ form12.caracteristicas|as_crispy_field }}
+
+                 <hr>
+                 <br>
+
+                <h5>Especies Forestales</h5>
+                {{ form12.coniferas_atributo|as_crispy_field }}
+                {{ form12.coniferas_comentario|as_crispy_field }}
+
+                <hr>
+                <br>
+
+                <h5>Conservación de Especies</h5>
+                {{ form12.xerofilas_atributo|as_crispy_field }}
+                {{ form12.xerofilas_comentario|as_crispy_field }}
+
+                <hr>
+                <br>
+
+             <h5>Paisajes Forestales</h5>
+                {{ form12.espeletias_atributo|as_crispy_field }}
+                {{ form12.espeletias_comentario|as_crispy_field }}
+
+                <button type="submit" class="btn btn-primary">Enviar</button>
+
+        </div>
+        <div class="col-2"></div>
+    </div>
+
+     <div class="row justify-content-md-center ocultar" id="Parte_13">
+        <div class="signup">
+            <h2>Caracterización Ambiental</h2>
+            <h3 align="center">Medio Biológico</h3>
+            <br>
+            <h3>Fauna</h3>
+                {% csrf_token %}
+                {{ form13.caracteristicas|as_crispy_field }}
+
+                 <hr>
+                 <br>
+
+                <h5>Especies de Mamíferos Terrestres</h5>
+                {{ form13.mamiferos_atributo|as_crispy_field }}
+                {{ form13.mamiferos_comentario|as_crispy_field }}
+
+                <hr>
+                <br>
+
+                <h5>Especies de Peces</h5>
+                {{ form13.peces_atributo|as_crispy_field }}
+                {{ form13.peces_comentario|as_crispy_field }}
+
+                <hr>
+                <br>
+
+             <h5>Especies de Aves</h5>
+                {{ form13.aves_atributo|as_crispy_field }}
+                {{ form13.aves_comentario|as_crispy_field }}
+
+                <hr>
+                <br>
+            <h5>Especies de Reptiles</h5>
+                {{ form13.reptiles_atributo|as_crispy_field }}
+                {{ form13.reptiles_comentario|as_crispy_field }}
+
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </form>
         </div>
         <div class="col-2"></div>
     </div>
+
+    <div class="row justify-content-md-center ocultar" id="Parte_10">
+        <div class="signup">
+            <h2>Conclusiones del Medio Biológico</h2>
+                {% csrf_token %}
+                {{ form14|crispy }}
+        </div>
+        <div class="col-2"></div>
+    </div>
+
     <br>
-        <button class="btn btn-primary" style="margin-left: 265px" onclick="prev()" id="espacio">Anterior</button>
-        <button class="btn btn-primary" style="margin-left: 280px" onclick="next()">Siguiente</button>
+
 
 {% endblock %}

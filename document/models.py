@@ -114,6 +114,44 @@ class Aire(models.Model):
     vientos_atributo = models.CharField(max_length=100)
     vientos_comentario = models.CharField(max_length=100)
 
+class ConclusionFisico(models.Model):
+    conclusiones = models.TextField(max_length=1000)
+
+class Forestal(models.Model):
+    caracteristicas = models.CharField(max_length=100)
+    especies_atributo = models.CharField(max_length=100)
+    especies_comentario = models.CharField(max_length=100)
+    conservacion_atributo = models.CharField(max_length=100)
+    conservacion_comentario = models.CharField(max_length=100)
+    paisaje_atributo = models.CharField(max_length=100)
+    paisaje_comentario = models.CharField(max_length=100)
+    bosque_atributo = models.CharField(max_length=100)
+    bosque_comentario = models.CharField(max_length=100)
+
+class Flora(models.Model):
+    caracteristicas = models.CharField(max_length=100)
+    coniferas_atributo = models.CharField(max_length=100)
+    coniferas_comentario = models.CharField(max_length=100)
+    xerofilas_atributo = models.CharField(max_length=100)
+    xerofilas_comentario = models.CharField(max_length=100)
+    espeletias_atributo = models.CharField(max_length=100)
+    espeletias_comentario = models.CharField(max_length=100)
+
+class Fauna(models.Model):
+    caracteristicas = models.CharField(max_length=100)
+    mamiferos_atributo = models.CharField(max_length=100)
+    mamiferos_comentario = models.CharField(max_length=100)
+    peces_atributo = models.CharField(max_length=100)
+    peces_comentario = models.CharField(max_length=100)
+    aves_atributo = models.CharField(max_length=100)
+    aves_comentario = models.CharField(max_length=100)
+    reptiles_atributo = models.CharField(max_length=100)
+    reptiles_comentario = models.CharField(max_length=100)
+
+class ConclusionBiologico(models.Model):
+    conclusiones = models.TextField(max_length=1000)
+
+
 class DatosProyecto(models.Model):
     titulo = models.CharField(max_length=130)
     ubicacion = models.CharField(max_length=130)
@@ -129,3 +167,8 @@ class DatosProyecto(models.Model):
     suelo = models.ForeignKey(Suelo, null=False, on_delete=models.CASCADE)
     agua = models.ForeignKey(Agua, null=False, on_delete=models.CASCADE)
     aire = models.ForeignKey(Aire, null=False, on_delete=models.CASCADE)
+    c_fisico = models.ForeignKey(ConclusionFisico, null=False, on_delete=models.CASCADE)
+    forestal = models.ForeignKey(Forestal, null=False, on_delete=models.CASCADE)
+    flora = models.ForeignKey(Flora, null=False, on_delete=models.CASCADE)
+    fauna = models.ForeignKey(Fauna, null=False, on_delete=models.CASCADE)
+

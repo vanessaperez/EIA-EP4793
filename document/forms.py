@@ -201,3 +201,84 @@ class AireForm(forms.ModelForm):
             'vientos_atributo': 'Atributo',
             'vientos_comentario': 'Comentario'
         }
+
+class ConclusionFisicoForm(forms.ModelForm):
+    class Meta:
+        model = ConclusionFisico
+        fields = ('conclusiones',)
+
+class ForestalForm(forms.ModelForm):
+    class Meta:
+        model = Forestal
+        fields = (
+        'caracteristicas', 'especies_atributo', 'especies_comentario', 'conservacion_atributo',
+        'conservacion_comentario', 'paisaje_atributo', 'paisaje_comentario', 'bosque_atributo',
+        'bosque_comentario',
+        )
+
+        labels = {
+            'caracteristicas': 'Características',
+            'especies_atributo': 'Atributo',
+            'especies_comentario': 'Comentario',
+            'conservacion_atributo': 'Atributo',
+            'conservacion_comentario': 'Comentario',
+            'paisaje_atributo': 'Atributo',
+            'paisaje_comentario': 'Comentario',
+            'bosque_atributo': 'Atributo',
+            'bosque_comentario': 'Comentario',
+        }
+
+        widgets = {
+            'caracteristicas': TextInput(attrs={'placeholder': 'Forestal'}),
+        }
+
+class FloraForm(forms.ModelForm):
+    class Meta:
+        model = Flora
+        fields = (
+        'caracteristicas', 'coniferas_atributo', 'coniferas_comentario', 'xerofilas_atributo',
+        'xerofilas_comentario', 'espeletias_atributo', 'espeletias_comentario',
+        )
+
+        labels = {
+            'caracteristicas': 'Características',
+            'coniferas_atributo': 'Atributo',
+            'coniferas_comentario': 'Comentario',
+            'xerofilas_atributo': 'Atributo',
+            'xerofilas_comentario': 'Comentario',
+            'espeletias_atributo': 'Atributo',
+            'espeletias_comentario': 'Comentario',
+        }
+
+        widgets = {
+            'caracteristicas': TextInput(attrs={'placeholder': 'Flora'}),
+        }
+
+class FaunaForm(forms.ModelForm):
+    class Meta:
+        model = Fauna
+        fields = (
+        'caracteristicas', 'mamiferos_atributo', 'mamiferos_comentario', 'peces_atributo',
+        'peces_comentario', 'aves_atributo', 'aves_comentario', 'reptiles_atributo', 'reptiles_comentario',
+        )
+
+        labels = {
+            'caracteristicas': 'Características',
+            'mamiferos_atributo': 'Atributo',
+            'mamiferos_comentario': 'Comentario',
+            'peces_atributo': 'Atributo',
+            'peces_comentario': 'Comentario',
+            'aves_atributo': 'Atributo',
+            'aves_comentario': 'Comentario',
+            'reptiles_atributo': 'Atributo',
+            'reptiles_comentario': 'Comentario',
+        }
+
+        widgets = {
+            'caracteristicas': TextInput(attrs={'placeholder': 'Fauna'}),
+        }
+
+class ConclusionBiologicoForm(forms.ModelForm):
+    class Meta:
+        model = ConclusionBiologico
+        fields = ('conclusiones',)
