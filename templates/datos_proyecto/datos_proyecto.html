@@ -5,6 +5,7 @@
 
 {% block content %}
 
+
     <div class="row justify-content-center" id="Parte_0">
         <div class="signup">
             <h2>Datos Generales del Proyecto</h2>
@@ -12,7 +13,7 @@
               {% csrf_token %}
               {{ form|crispy }}
 
-                <button type="submit" class="btn btn-primary">Enviar</button>
+
         </div>
         <div class="col-2"></div>
     </div>
@@ -25,7 +26,7 @@
               {% csrf_token %}
               {{ form1|crispy }}
 
-                <button type="submit" class="btn btn-primary">Enviar</button>
+
         </div>
         <div class="col-2"></div>
     </div>
@@ -37,32 +38,237 @@
               {% csrf_token %}
               {{ form2|crispy }}
 
-                <button type="submit" class="btn btn-primary">Enviar</button>
+
         </div>
         <div class="col-2"></div>
     </div>
 
      <div class="row justify-content-center ocultar" id="Parte_3">
         <div class="signup">
-            <h2>Datos del Espacio o Área donde se ejecutará el Proyecto </h2>
+            <h2 align="center">Datos del Espacio o Área donde </h2>
+            <h2 align="center"> se ejecutará el Proyecto </h2>
 
               {% csrf_token %}
-              {{ form3|crispy }}
+              {{ form3.tenencia_tierra|as_crispy_field }}
+              {{ form3.ubicacion|as_crispy_field }}
 
             <h2>Linderos del Área o Espacio</h2>
 
-                {{ form4|crispy }}
+                {{ form3.lindero_norte|as_crispy_field }}
+                {{ form3.lindero_sur|as_crispy_field }}
+                {{ form3.lindero_este|as_crispy_field }}
+                {{ form3.lindero_oeste|as_crispy_field }}
 
             <h2>Coordenadas U.T.M.</h2>
 
+                {{ form3.coor_norte|as_crispy_field }}
+                {{ form3.coor_sur|as_crispy_field }}
+                {{ form3.coor_este|as_crispy_field }}
+                {{ form3.coor_oeste|as_crispy_field }}
+
+
+        </div>
+        <div class="col-2"></div>
+    </div>
+
+    <div class="row justify-content-center ocultar" id="Parte_4">
+        <div class="signup">
+            <h2>Datos del Personal Responsable del Estudio</h2>
+            <h2 align="center">de Impacto Ambiental </h2>
+            <br>
+            <h4>Especialista del EsIA</h4>
+
+              {% csrf_token %}
+              {{ form4.nombre_eia|as_crispy_field }}
+              {{ form4.apellido_eia|as_crispy_field }}
+              {{ form4.cedula_eia|as_crispy_field }}
+              {{ form4.nivel_eia|as_crispy_field }}
+
+            <br>
+            <hr>
+            <br>
+
+            <h4>Especialista del Medio Físico</h4>
+
+              {{ form4.nombre_fisico|as_crispy_field }}
+              {{ form4.apellido_fisico|as_crispy_field }}
+              {{ form4.cedula_fisico|as_crispy_field }}
+              {{ form4.nivel_fisico|as_crispy_field }}
+
+            <br>
+            <hr>
+            <br>
+
+            <h4>Especialista del Medio Biológico</h4>
+
+              {{ form4.nombre_bio|as_crispy_field }}
+              {{ form4.apellido_bio|as_crispy_field }}
+              {{ form4.cedula_bio|as_crispy_field }}
+              {{ form4.nivel_bio|as_crispy_field }}
+
+            <br>
+            <hr>
+            <br>
+
+            <h4>Especialista del Medio Socioeconómico</h4>
+
+              {{ form4.nombre_eco|as_crispy_field }}
+              {{ form4.apellido_eco|as_crispy_field }}
+              {{ form4.cedula_eco|as_crispy_field }}
+              {{ form4.nivel_eco|as_crispy_field }}
+
+            <br>
+            <hr>
+            <br>
+
+            <h4>Gerente del Proyecto de Desarrollo</h4>
+
+              {{ form4.nombre_desa|as_crispy_field }}
+              {{ form4.apellido_desa|as_crispy_field }}
+              {{ form4.cedula_desa|as_crispy_field }}
+              {{ form4.nivel_desa|as_crispy_field }}
+
+
+
+        </div>
+        <div class="col-2"></div>
+    </div>
+
+     <div class="row justify-content-center ocultar" id="Parte_5">
+        <div class="signup">
+            <h2>Datos de la elaboración</h2>
+            <h2>del presente documento</h2>
+                {% csrf_token %}
+
                 {{ form5|crispy }}
+
+
+        </div>
+        <div class="col-2"></div>
+    </div>
+
+     <div class="row justify-content-center ocultar" id="Parte_6">
+        <div class="signup">
+            <h2>Descripción del Proyecto</h2>
+            <h3>Objetivos del Estudio de Impacto Ambiental</h3>
+                {% csrf_token %}
+
+                {{ form6|crispy }}
+
+
+        </div>
+        <div class="col-2"></div>
+    </div>
+
+     <div class="row justify-content-center ocultar" id="Parte_7">
+        <div class="signup">
+            <h2>Caracterización Ambiental</h2>
+            <h3 align="center">Medio Físico</h3>
+            <br>
+            <h3>Suelo</h3>
+                {% csrf_token %}
+                {{ form7.caracteristicas|as_crispy_field }}
+
+                 <hr>
+                 <br>
+
+                <h5>Tipo</h5>
+                {{ form7.tipo_atributo|as_crispy_field }}
+                {{ form7.tipo_comentario|as_crispy_field }}
+
+                <hr>
+                <br>
+
+                <h5>Homogeneidad</h5>
+                {{ form7.homo_atributo|as_crispy_field }}
+                {{ form7.homo_comentario|as_crispy_field }}
+
+                <hr>
+                <br>
+
+             <h5>Textura</h5>
+                {{ form7.textura_atributo|as_crispy_field }}
+                {{ form7.textura_comentario|as_crispy_field }}
+
+
+        </div>
+        <div class="col-2"></div>
+    </div>
+
+     <div class="row justify-content-center ocultar" id="Parte_8">
+        <div class="signup">
+            <h2>Caracterización Ambiental</h2>
+            <h3 align="center">Medio Físico</h3>
+            <br>
+            <h3>Agua</h3>
+                {% csrf_token %}
+                {{ form8.caracteristicas|as_crispy_field }}
+
+                 <hr>
+                 <br>
+
+                <h5>Recursos Híbridos</h5>
+                {{ form8.recurso_atributo|as_crispy_field }}
+                {{ form8.recurso_comentario|as_crispy_field }}
+
+                <hr>
+                <br>
+
+                <h5>Drenaje</h5>
+                {{ form8.drenaje_atributo|as_crispy_field }}
+                {{ form8.drenaje_comentario|as_crispy_field }}
+
+                <hr>
+                <br>
+
+             <h5>Corrientes de Agua</h5>
+                {{ form8.corriente_atributo|as_crispy_field }}
+                {{ form8.corriente_comentario|as_crispy_field }}
+
+
+
+        </div>
+        <div class="col-2"></div>
+    </div>
+
+
+      <div class="row justify-content-center ocultar" id="Parte_9">
+        <div class="signup">
+            <h2>Caracterización Ambiental</h2>
+            <h3 align="center">Medio Físico</h3>
+            <br>
+            <h3>Aire</h3>
+                {% csrf_token %}
+                {{ form9.caracteristicas|as_crispy_field }}
+
+                 <hr>
+                 <br>
+
+                <h5>Tipo de clima</h5>
+                {{ form9.clima_atributo|as_crispy_field }}
+                {{ form9.clima_comentario|as_crispy_field }}
+
+                <hr>
+                <br>
+
+                <h5>Temperatura</h5>
+                {{ form9.temp_atributo|as_crispy_field }}
+                {{ form9.temp_comentario|as_crispy_field }}
+
+                <hr>
+                <br>
+
+             <h5>Vientos</h5>
+                {{ form9.vientos_atributo|as_crispy_field }}
+                {{ form9.vientos_comentario|as_crispy_field }}
 
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </form>
         </div>
         <div class="col-2"></div>
     </div>
- <button class="btn btn-primary" onclick="prev()">Anterior</button>
-    <button class="btn btn-primary" onclick="next()">Siguiente</button>
+    <br>
+        <button class="btn btn-primary" style="margin-left: 265px" onclick="prev()" id="espacio">Anterior</button>
+        <button class="btn btn-primary" style="margin-left: 280px" onclick="next()">Siguiente</button>
 
 {% endblock %}

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'document',
 ]
 
+
 AUTH_USER_MODEL = 'users.CustomUser'
 
 MIDDLEWARE = [
