@@ -7,6 +7,17 @@ class DatosProyecto(models.Model):
     ubicacion = models.CharField(max_length=130)
     area = models.CharField(max_length=130)
     tipo = models.CharField(max_length=130)
+    status = models.CharField(max_length=20)
+    solicitante = models.ForeignKey(DatosSolicitante, null=False)
+    organizacion = models.ForeignKey(DatosOrganizacion, null=False)
+    d_espacio = models.ForeignKey(DatosEspacio, null=False)
+    d_personal = models.ForeignKey(DatosPersonal, null=False)
+    d_documento = models.ForeignKey(DatosDocumento, null=False)
+    descripcion_proy = models.ForeignKey(DescripcionProyecto, null=False)
+    suelo = models.ForeignKey(Suelo, null=False)
+    agua = models.ForeignKey(Agua, null=False)
+    aire = models.ForeignKey(Aire, null=False)
+
 
 
 class DatosSolicitante(models.Model):
