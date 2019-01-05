@@ -1,5 +1,5 @@
 var active = 0; //Comienza en 0, es decir 0 es la primera parte
-var limite_partes = 14; //Si el limite es 2 partes, la ultima parte sera la parte 1
+var limite_partes = 8; //Si el limite es 2 partes, la ultima parte sera la parte 1
 var prefijo = "Parte_"
 
 function select_elemento(parte){
@@ -12,6 +12,7 @@ function mostrar(parte){
     elemento.classList.remove("ocultar");
 }
 function ocultar(parte){
+    //console.log(parte);
     elemento = select_elemento(parte);
     elemento.classList.add("ocultar");
 }

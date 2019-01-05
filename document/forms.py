@@ -1,12 +1,12 @@
-from django import forms
-from django.forms import TextInput
-
 from .models import *
-from crispy_forms.helper import FormHelper, Layout
+from django.forms import TextInput
+# noinspection PyUnresolvedReferences
 
-RAZON_CHOICES = (
-    ('pnatural', 'Natural'),
-    ('pjuridica', 'Juridica'),
+
+
+RAZON_SOCIAL_CHOICES = (
+    ('natural', 'Persona Natural'),
+    ('juridica', 'Persona Jurídica'),
 )
 
 tierra_choices = (
@@ -50,7 +50,7 @@ class OrganizacionForm(forms.ModelForm):
         fields = ('razon_social', 'nombre', 'rif', 'dir_oficina', 'representante_legal', 'telefono', 'email')
 
         widgets = {
-            'razon_social': forms.RadioSelect(choices=RAZON_CHOICES)
+            'razon_social': forms.RadioSelect(choices=RAZON_SOCIAL_CHOICES)
         }
 
         labels = {
@@ -134,10 +134,10 @@ class DatosDocumentoForm(forms.ModelForm):
             'estado': 'Estado',
             'pais': 'País'
         }
+        widgets = {
+            'fecha': forms.DateInput(attrs={'class': 'datepicker'}),
+        }
 
-        def __init__(self, *args, **kwargs):
-            super(DatosDocumentoForm, self).__init__(*args, **kwargs)
-            self.fields['fecha'].widget.attrs['class'] = 'datepicker'
 
 class DescripcionProyectoForm(forms.ModelForm):
     class Meta:
@@ -154,131 +154,317 @@ class DescripcionProyectoForm(forms.ModelForm):
 class SueloForm(forms.ModelForm):
     class Meta:
         model = Suelo
-        fields = ('caracteristicas', 'tipo_atributo', 'tipo_comentario', 'homo_atributo', 'homo_comentario',
-                  'textura_atributo', 'textura_comentario')
-        labels ={
-            'caracteristicas': 'Características',
-            'tipo_atributo' : 'Atributo',
-            'tipo_comentario': 'Comentario',
-            'homo_atributo': 'Atributo',
-            'homo_comentario': 'Comentario',
-            'textura_atributo':'Atributo',
-            'textura_comentario': 'Comentario'
+        fields = '__all__'
+        labels = {
+            'caracteristicas_suelo': 'Características',
+            'sub_suelo': 'Subcaracterística',
+            'atributos_suelo': 'Atributos',
+            'comentarios_suelo': 'Comentarios',
         }
 
         widgets = {
-            'caracteristicas': TextInput(attrs={'placeholder': 'Sistema Edafológico'}),
+            'caracteristicas_suelo': TextInput(attrs={'class': 'form-control'}),
+            'sub_suelo': TextInput(attrs={'class': 'form-control'}),
+            'atributos_suelo': TextInput(attrs={'class': 'form-control'}),
+            'comentarios_suelo': TextInput(attrs={'class': 'form-control'}),
         }
 
 class AguaForm(forms.ModelForm):
     class Meta:
         model = Agua
-        fields = ('caracteristicas', 'recurso_atributo', 'recurso_comentario', 'drenaje_atributo',
-                'drenaje_comentario', 'corriente_atributo', 'corriente_comentario'
-        )
+        fields = '__all__'
         labels = {
-            'caracteristicas': 'Características',
-            'recurso_atributo': 'Atributo',
-            'recurso_comentario': 'Comentario',
-            'drenaje_atributo': 'Atributo',
-            'drenaje_comentario': 'Comentario',
-            'corriente_atributo': 'Atributo',
-            'corriente_comentario': 'Comentario'
+            'caracteristicas_agua': 'Características',
+            'sub_agua': 'Subcaracterística',
+            'atributos_agua': 'Atributos',
+            'comentarios_agua': 'Comentarios',
+        }
+
+        widgets = {
+            'caracteristicas_agua': TextInput(attrs={'class': 'form-control'}),
+            'sub_agua': TextInput(attrs={'class': 'form-control'}),
+            'atributos_agua': TextInput(attrs={'class': 'form-control'}),
+            'comentarios_agua': TextInput(attrs={'class': 'form-control'}),
         }
 
 class AireForm(forms.ModelForm):
     class Meta:
         model = Aire
-        fields = ('caracteristicas', 'clima_atributo', 'clima_comentario', 'temp_atributo',
-                'temp_comentario', 'vientos_atributo', 'vientos_comentario'
-        )
+        fields = '__all__'
         labels = {
-            'caracteristicas': 'Características',
-            'clima_atributo': 'Atributo',
-            'clima_comentario': 'Comentario',
-            'temp_atributo': 'Atributo',
-            'temp_comentario': 'Comentario',
-            'vientos_atributo': 'Atributo',
-            'vientos_comentario': 'Comentario'
+            'caracteristicas_aire': 'Características',
+            'sub_aire': 'Subcaracterística',
+            'atributos_aire': 'Atributos',
+            'comentarios_aire': 'Comentarios',
+        }
+
+        widgets = {
+            'caracteristicas_aire': TextInput(attrs={'class': 'form-control'}),
+            'sub_aire': TextInput(attrs={'class': 'form-control'}),
+            'atributos_aire': TextInput(attrs={'class': 'form-control'}),
+            'comentarios_aire': TextInput(attrs={'class': 'form-control'}),
         }
 
 class ConclusionFisicoForm(forms.ModelForm):
     class Meta:
         model = ConclusionFisico
-        fields = ('conclusiones',)
+        fields = '__all__'
+        labels = {
+            'conclusion_fisico': 'Conclusiones',
+        }
 
 class ForestalForm(forms.ModelForm):
     class Meta:
         model = Forestal
-        fields = (
-        'caracteristicas', 'especies_atributo', 'especies_comentario', 'conservacion_atributo',
-        'conservacion_comentario', 'paisaje_atributo', 'paisaje_comentario', 'bosque_atributo',
-        'bosque_comentario',
-        )
+        fields = '__all__'
 
         labels = {
-            'caracteristicas': 'Características',
-            'especies_atributo': 'Atributo',
-            'especies_comentario': 'Comentario',
-            'conservacion_atributo': 'Atributo',
-            'conservacion_comentario': 'Comentario',
-            'paisaje_atributo': 'Atributo',
-            'paisaje_comentario': 'Comentario',
-            'bosque_atributo': 'Atributo',
-            'bosque_comentario': 'Comentario',
+            'caracteristicas_forestal': 'Características',
+            'sub_forestal': 'Subcaracterística',
+            'atributos_forestal': 'Atributos',
+            'comentarios_forestal': 'Comentarios',
         }
 
         widgets = {
-            'caracteristicas': TextInput(attrs={'placeholder': 'Forestal'}),
+            'caracteristicas_forestal': TextInput(attrs={'class': 'form-control'}),
+            'sub_forestal': TextInput(attrs={'class': 'form-control'}),
+            'atributos_forestal': TextInput(attrs={'class': 'form-control'}),
+            'comentarios_forestal': TextInput(attrs={'class': 'form-control'}),
         }
 
 class FloraForm(forms.ModelForm):
     class Meta:
         model = Flora
-        fields = (
-        'caracteristicas', 'coniferas_atributo', 'coniferas_comentario', 'xerofilas_atributo',
-        'xerofilas_comentario', 'espeletias_atributo', 'espeletias_comentario',
-        )
+        fields = '__all__'
 
         labels = {
-            'caracteristicas': 'Características',
-            'coniferas_atributo': 'Atributo',
-            'coniferas_comentario': 'Comentario',
-            'xerofilas_atributo': 'Atributo',
-            'xerofilas_comentario': 'Comentario',
-            'espeletias_atributo': 'Atributo',
-            'espeletias_comentario': 'Comentario',
+            'caracteristicas_flora': 'Características',
+            'sub_flora': 'Subcaracterística',
+            'atributos_flora': 'Atributos',
+            'comentarios_flora': 'Comentarios',
         }
 
         widgets = {
-            'caracteristicas': TextInput(attrs={'placeholder': 'Flora'}),
+            'caracteristicas_flora': TextInput(attrs={'class': 'form-control'}),
+            'sub_flora': TextInput(attrs={'class': 'form-control'}),
+            'atributos_flora': TextInput(attrs={'class': 'form-control'}),
+            'comentarios_flora': TextInput(attrs={'class': 'form-control'}),
         }
 
 class FaunaForm(forms.ModelForm):
     class Meta:
         model = Fauna
-        fields = (
-        'caracteristicas', 'mamiferos_atributo', 'mamiferos_comentario', 'peces_atributo',
-        'peces_comentario', 'aves_atributo', 'aves_comentario', 'reptiles_atributo', 'reptiles_comentario',
-        )
+        fields = '__all__'
 
         labels = {
-            'caracteristicas': 'Características',
-            'mamiferos_atributo': 'Atributo',
-            'mamiferos_comentario': 'Comentario',
-            'peces_atributo': 'Atributo',
-            'peces_comentario': 'Comentario',
-            'aves_atributo': 'Atributo',
-            'aves_comentario': 'Comentario',
-            'reptiles_atributo': 'Atributo',
-            'reptiles_comentario': 'Comentario',
+            'caracteristicas_fauna': 'Características',
+            'sub_fauna': 'Subcaracterística',
+            'atributos_fauna': 'Atributos',
+            'comentarios_fauna': 'Comentarios',
         }
 
         widgets = {
-            'caracteristicas': TextInput(attrs={'placeholder': 'Fauna'}),
+            'caracteristicas_fauna': TextInput(attrs={'class': 'form-control'}),
+            'sub_fauna': TextInput(attrs={'class': 'form-control'}),
+            'atributos_fauna': TextInput(attrs={'class': 'form-control'}),
+            'comentarios_fauna': TextInput(attrs={'class': 'form-control'}),
         }
 
 class ConclusionBiologicoForm(forms.ModelForm):
     class Meta:
         model = ConclusionBiologico
-        fields = ('conclusiones',)
+        fields = '__all__'
+        labels = {
+            'conclusion_bio': 'Conclusiones',
+        }
+
+class SocialForm(forms.ModelForm):
+    class Meta:
+        model = Social
+        fields = '__all__'
+        labels = {
+            'caracteristicas_social': 'Características',
+            'sub_social': 'Subcaracterística',
+            'atributos_social': 'Atributos',
+            'comentarios_social': 'Comentarios',
+        }
+
+        widgets = {
+            'caracteristicas_social': TextInput(attrs={'class': 'form-control'}),
+            'sub_social': TextInput(attrs={'class': 'form-control'}),
+            'atributos_social': TextInput(attrs={'class': 'form-control'}),
+            'comentarios_social': TextInput(attrs={'class': 'form-control'}),
+        }
+
+class EconomicaForm(forms.ModelForm):
+    class Meta:
+        model = Economica
+        fields = '__all__'
+        labels = {
+            'caracteristicas_eco': 'Características',
+            'sub_economica': 'Subcaracterística',
+            'atributos_eco': 'Atributos',
+            'comentarios_eco': 'Comentarios',
+        }
+
+        widgets = {
+            'caracteristicas_eco': TextInput(attrs={'class': 'form-control'}),
+            'sub_economica': TextInput(attrs={'class': 'form-control'}),
+            'atributos_eco': TextInput(attrs={'class': 'form-control'}),
+            'comentarios_eco': TextInput(attrs={'class': 'form-control'}),
+        }
+
+class CulturalForm(forms.ModelForm):
+    class Meta:
+        model = Cultural
+        fields = '__all__'
+        labels = {
+            'caracteristicas_cultural': 'Características',
+            'sub_cultural': 'Subcaracterística',
+            'atributos_cultural': 'Atributos',
+            'comentarios_cultural': 'Comentarios',
+        }
+
+        widgets = {
+            'caracteristicas_cultural': TextInput(attrs={'class': 'form-control'}),
+            'sub_cultural': TextInput(attrs={'class': 'form-control'}),
+            'atributos_cultural': TextInput(attrs={'class': 'form-control'}),
+            'comentarios_cultural': TextInput(attrs={'class': 'form-control'}),
+        }
+
+class ConclusionCulturalForm(forms.ModelForm):
+    class Meta:
+        model = ConclusionCultural
+        fields = '__all__'
+        labels = {
+            'conclusion_cultural': 'Conclusiones',
+        }
+
+class ActividadesForm(forms.ModelForm):
+    class Meta:
+        model = Actividades
+        fields = '__all__'
+        labels = {
+         'proceso': 'Proceso',
+         'actividad': 'Actividad',
+         'amenazas': 'Amenazas',
+          'vulnerabilidad': 'Vulnerabilidad',
+        }
+
+        widgets = {
+            'proceso': TextInput(attrs={'class': 'form-control'}),
+            'actividad': TextInput(attrs={'class': 'form-control'}),
+            'amenazas': TextInput(attrs={'class': 'form-control'}),
+            'vulnerabilidad': TextInput(attrs={'class': 'form-control'}),
+        }
+
+class ComentariosForm(forms.ModelForm):
+    class Meta:
+        model = Comentarios
+        fields = '__all__'
+        labels = {
+            'comentarios': 'Comentarios',
+        }
+
+class DiagramaForm(forms.ModelForm):
+    class Meta:
+        model = Diagrama
+        fields = '__all__'
+        labels = {
+            'archivo': 'Diagrama Gantt'
+        }
+
+class TalentoHumanoForm(forms.ModelForm):
+    class Meta:
+        model = TalentoHumano
+        fields = '__all__'
+        labels = {
+            'actividad_talento': 'Actividad',
+            'cantidad_talento': 'Cantidad',
+            'tiempo_talento': 'Tiempo',
+            'honorarios_talento': 'Honorarios',
+        }
+
+class ServiciosForm(forms.ModelForm):
+    class Meta:
+        model = Servicios
+        fields = '__all__'
+        labels = {
+            'actividad_servicios': 'Actividad',
+            'cantidad_servicios': 'Cantidad',
+            'tiempo_servicios': 'Tiempo',
+            'monto_servicios': 'Monto Bs',
+        }
+
+class PasajesForm(forms.ModelForm):
+    class Meta:
+        model = Pasajes
+        fields = '__all__'
+        labels = {
+            'actividad_pasajes': 'Actividad',
+            'cantidad_pasajes': 'Cantidad',
+            'tiempo_pasajes': 'Tiempo',
+            'monto_pasajes': 'Monto Bs',
+        }
+
+class RecursosMaterialesForm(forms.ModelForm):
+    class Meta:
+        model = RecursosMateriales
+        fields = '__all__'
+        labels = {
+            'materiales': 'Materiales',
+            'cantidad_materiales': 'Cantidad',
+            'control_materiales': 'C/U',
+            'monto_materiales': 'Monto Bs',
+        }
+
+class OficinaForm(forms.ModelForm):
+    class Meta:
+        model = Oficina
+        fields = '__all__'
+        labels = {
+            'materiales_oficina': 'Materiales',
+            'cantidad_oficina': 'Cantidad',
+            'control_oficina': 'C/U',
+            'monto_oficina': 'Monto Bs',
+        }
+
+class InsumosForm(forms.ModelForm):
+    class Meta:
+        model = Insumos
+        fields = '__all__'
+        labels = {
+            'insumos': 'Insumos',
+            'cantidad_insumos': 'Cantidad',
+            'control_insumos': 'C/U',
+            'monto_insumos': 'Monto Bs',
+        }
+
+class PlanInversionForm(forms.ModelForm):
+    class Meta:
+        model = PlanInversion
+        fields = '__all__'
+        labels = {
+            'concepto': 'Concepto',
+            'monto_plan': 'Monto Bs',
+        }
+
+class PlanInversionForm(forms.ModelForm):
+    class Meta:
+        model = Informacion
+        fields = '__all__'
+        labels = {
+            'informacion': 'Información',
+        }
+
+class ResponsableForm(forms.ModelForm):
+    class Meta:
+        model = Responsable
+        fields = '__all__'
+        labels = {
+            'nombre': 'Nombre',
+            'apellido': 'Apellido',
+            'nivel_academico': 'Nivel Académico',
+            'fecha': 'Fecha',
+            'ciudad': 'Ciudad',
+        }
