@@ -1,5 +1,6 @@
 {% load static %}
 {% load crispy_forms_tags %}
+{% load widget_tweaks %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,39 +9,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-     <!-- Bootstrap CSS CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+{#     <!-- Bootstrap CSS CDN -->#}
+{#    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">#}
+{#    <!-- Scrollbar Custom CSS -->#}
+{#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">#}
+{##}
+{#    <!-- Font Awesome Icons -->#}
+{#    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">#}
+{##}
+{#    <!-- Font Awesome JS -->#}
+{#    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>#}
+{#    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>#}
 
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
-    <!-- Font Awesome JS -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+<!------ Include the above in your HEAD tag ---------->
 
+ <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
 
     <title>{% block title %}Login{% endblock title %}</title>
 
 </head>
-<body>
-            {% block content %}
-                <div class="login row justify-content-center">
-                    <div class="login">
-                        <h2>Login</h2>
-                        <form method="post">
-                          {% csrf_token %}
-                          {{ form|crispy }}
-                          <button type="submit" class="btn btn-success">Login</button>
-                        </form>
+<body  id="LoginForm">
+    {% block content %}
+
+        <div class="container">
+            <br>
+            <br>
+            <div class="login-form">
+                <div class="main-div">
+                <div class="panel">
+                   <h2 class="font-weight-bold">LOGIN</h2>
+                    <br>
+                   </div>
+
+                    <form  method="POST">
+                        {% csrf_token %}
+                    <div class="form-group">
+                      {% render_field form.username placeholder='Correo' class="form-control" %}
                     </div>
-                    <div class="col-2"></div>
+
+                    <div class="form-group">
+                      {% render_field form.password placeholder='Contraseña' class="form-control" %}
+                    </div>
+
+                        <div class="forgot">
+                        <a href="reset.html">¿Olvidó su contraseña?</a>
                 </div>
-            {% endblock %}
+                        <button type="submit" class="btn btn-primary font-weight-bold">INGRESAR</button>
+                    </form>
+            </div>
+        </div>
+
+
+    {% endblock %}
 </body>
+</html>
 
 
 
