@@ -41,16 +41,20 @@ class SolicitanteForm(forms.ModelForm):
             'telefono': 'Teléfono de Contacto',
             'email': 'E-mail'
         }
+        widgets = {
+            'cedula': forms.TextInput(attrs={'placeholder': 'V12345678'})
+        }
 
 class OrganizacionForm(forms.ModelForm):
 
     class Meta:
 
         model = DatosOrganizacion
-        fields = ('razon_social', 'nombre', 'rif', 'dir_oficina', 'representante_legal', 'telefono', 'email')
+        fields = '__all__'
 
         widgets = {
-            'razon_social': forms.RadioSelect(choices=RAZON_SOCIAL_CHOICES)
+            'razon_social': forms.RadioSelect(choices=RAZON_SOCIAL_CHOICES),
+            'rif': forms.TextInput(attrs={'placeholder': 'j-12345678-1'})
         }
 
         labels = {
@@ -121,6 +125,15 @@ class DatosPersonalForm(forms.ModelForm):
             'apellido_desa': 'Apellido',
             'cedula_desa': 'C.I. o Pasaporte',
             'nivel_desa': 'Nivel Académico'
+        }
+
+        widgets = {
+            'cedula_eia': forms.TextInput(attrs={'placeholder': 'V12345678'}),
+            'cedula_fisico': forms.TextInput(attrs={'placeholder': 'V12345678'}),
+            'cedula_bio': forms.TextInput(attrs={'placeholder': 'V12345678'}),
+            'cedula_eco': forms.TextInput(attrs={'placeholder': 'V12345678'}),
+            'cedula_desa': forms.TextInput(attrs={'placeholder': 'V12345678'}),
+
         }
 
 
@@ -374,6 +387,7 @@ class DiagramaForm(forms.ModelForm):
             'archivo': 'Diagrama Gantt'
         }
 
+
 class TalentoHumanoForm(forms.ModelForm):
     class Meta:
         model = TalentoHumano
@@ -383,6 +397,14 @@ class TalentoHumanoForm(forms.ModelForm):
             'cantidad_talento': 'Cantidad',
             'tiempo_talento': 'Tiempo',
             'honorarios_talento': 'Honorarios',
+            'total_talento': 'Total',
+        }
+        widgets = {
+            'actividad_talento': TextInput(attrs={'class': 'form-control'}),
+            'cantidad_talento': TextInput(attrs={'class': 'form-control'}),
+            'tiempo_talento': TextInput(attrs={'class': 'form-control'}),
+            'honorarios_talento': TextInput(attrs={'class': 'form-control', 'placeholder': '0,00'}),
+            'total_talento':  TextInput(attrs={'class': 'form-control', 'placeholder': '0,00'}),
         }
 
 class ServiciosForm(forms.ModelForm):
@@ -394,6 +416,14 @@ class ServiciosForm(forms.ModelForm):
             'cantidad_servicios': 'Cantidad',
             'tiempo_servicios': 'Tiempo',
             'monto_servicios': 'Monto Bs',
+            'total_servicios': 'Total',
+        }
+        widgets = {
+            'actividad_servicios': TextInput(attrs={'class': 'form-control'}),
+            'cantidad_servicios': TextInput(attrs={'class': 'form-control'}),
+            'tiempo_servicios': TextInput(attrs={'class': 'form-control'}),
+            'monto_servicios': TextInput(attrs={'class': 'form-control', 'placeholder': '0,00'}),
+            'total_servicios': TextInput(attrs={'class': 'form-control', 'placeholder': '0,00'}),
         }
 
 class PasajesForm(forms.ModelForm):
@@ -405,6 +435,14 @@ class PasajesForm(forms.ModelForm):
             'cantidad_pasajes': 'Cantidad',
             'tiempo_pasajes': 'Tiempo',
             'monto_pasajes': 'Monto Bs',
+            'total_pasajes': 'Total',
+        }
+        widgets = {
+            'actividad_pasajes': TextInput(attrs={'class': 'form-control'}),
+            'cantidad_pasajes': TextInput(attrs={'class': 'form-control'}),
+            'tiempo_pasajes': TextInput(attrs={'class': 'form-control'}),
+            'monto_pasajes': TextInput(attrs={'class': 'form-control', 'placeholder': '0,00'}),
+            'total_pasajes': TextInput(attrs={'class': 'form-control', 'placeholder': '0,00'}),
         }
 
 class RecursosMaterialesForm(forms.ModelForm):
@@ -416,6 +454,14 @@ class RecursosMaterialesForm(forms.ModelForm):
             'cantidad_materiales': 'Cantidad',
             'control_materiales': 'C/U',
             'monto_materiales': 'Monto Bs',
+            'total_materiales': 'Total',
+        }
+        widgets = {
+            'materiales': TextInput(attrs={'class': 'form-control'}),
+            'cantidad_materiales': TextInput(attrs={'class': 'form-control'}),
+            'control_materiales': TextInput(attrs={'class': 'form-control'}),
+            'monto_materiales': TextInput(attrs={'class': 'form-control', 'placeholder': '0,00'}),
+            'total_materiales': TextInput(attrs={'class': 'form-control', 'placeholder': '0,00'}),
         }
 
 class OficinaForm(forms.ModelForm):
@@ -427,6 +473,14 @@ class OficinaForm(forms.ModelForm):
             'cantidad_oficina': 'Cantidad',
             'control_oficina': 'C/U',
             'monto_oficina': 'Monto Bs',
+            'total_oficina': 'Total',
+        }
+        widgets = {
+            'materiales_oficina': TextInput(attrs={'class': 'form-control'}),
+            'cantidad_oficina': TextInput(attrs={'class': 'form-control'}),
+            'control_oficina': TextInput(attrs={'class': 'form-control'}),
+            'monto_oficina': TextInput(attrs={'class': 'form-control', 'placeholder': '0,00'}),
+            'total_oficina': TextInput(attrs={'class': 'form-control', 'placeholder': '0,00'}),
         }
 
 class InsumosForm(forms.ModelForm):
@@ -438,6 +492,14 @@ class InsumosForm(forms.ModelForm):
             'cantidad_insumos': 'Cantidad',
             'control_insumos': 'C/U',
             'monto_insumos': 'Monto Bs',
+            'total_insumos': 'Total',
+        }
+        widgets = {
+            'insumos': TextInput(attrs={'class': 'form-control'}),
+            'cantidad_insumos': TextInput(attrs={'class': 'form-control'}),
+            'control_insumos': TextInput(attrs={'class': 'form-control'}),
+            'monto_insumos': TextInput(attrs={'class': 'form-control', 'placeholder': '0,00'}),
+            'total_insumos': TextInput(attrs={'class': 'form-control', 'placeholder': '0,00'}),
         }
 
 class PlanInversionForm(forms.ModelForm):
@@ -447,9 +509,15 @@ class PlanInversionForm(forms.ModelForm):
         labels = {
             'concepto': 'Concepto',
             'monto_plan': 'Monto Bs',
+            'total_inversion': 'Total',
+        }
+        widgets = {
+            'concepto': TextInput(attrs={'class': 'form-control'}),
+            'monto_plan': TextInput(attrs={'class': 'form-control', 'placeholder': '0,00'}),
+            'total_inversion': TextInput(attrs={'class': 'form-control', 'placeholder': '0,00'}),
         }
 
-class PlanInversionForm(forms.ModelForm):
+class InformacionForm(forms.ModelForm):
     class Meta:
         model = Informacion
         fields = '__all__'

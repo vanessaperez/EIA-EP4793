@@ -104,6 +104,9 @@
 {#        });#}
 {#    </script>#}
 
+
+
+
  <script src="{% static "javascript/jquery.formset.js" %}" type="text/javascript"> </script>
 
  <script type="text/javascript">
@@ -119,6 +122,62 @@
         $('#myFormset3Table tbody tr').formset({
             prefix: '{{ form_aire.prefix }}',
             formCssClass: 'dynamic-formset3'
+        });
+        $('#myFormset4Table tbody tr').formset({
+            prefix: '{{ form_forestal.prefix }}',
+            formCssClass: 'dynamic-formset4'
+        });
+        $('#myFormset5Table tbody tr').formset({
+            prefix: '{{ form_flora.prefix }}',
+            formCssClass: 'dynamic-formset5'
+        });
+        $('#myFormset6Table tbody tr').formset({
+            prefix: '{{ form_fauna.prefix }}',
+            formCssClass: 'dynamic-formset6'
+        });
+        $('#myFormset7Table tbody tr').formset({
+            prefix: '{{ form_social.prefix }}',
+            formCssClass: 'dynamic-formset7'
+        });
+        $('#myFormset8Table tbody tr').formset({
+            prefix: '{{ form_economica.prefix }}',
+            formCssClass: 'dynamic-formset8'
+        });
+        $('#myFormset9Table tbody tr').formset({
+            prefix: '{{ form_cultural.prefix }}',
+            formCssClass: 'dynamic-formset9'
+        });
+        $('#myFormset10Table tbody tr').formset({
+            prefix: '{{ form_actividad.prefix }}',
+            formCssClass: 'dynamic-formset10'
+        });
+        $('#myFormset11Table tbody tr').formset({
+            prefix: '{{ form_talento.prefix }}',
+            formCssClass: 'dynamic-formset11'
+        });
+        $('#myFormset12Table tbody tr').formset({
+            prefix: '{{ form_servicio.prefix }}',
+            formCssClass: 'dynamic-formset12'
+        });
+        $('#myFormset13Table tbody tr').formset({
+            prefix: '{{ form_pasaje.prefix }}',
+            formCssClass: 'dynamic-formset13'
+        });
+        $('#myFormset14Table tbody tr').formset({
+            prefix: '{{ form_recursos.prefix }}',
+            formCssClass: 'dynamic-formset14'
+        });
+        $('#myFormset15Table tbody tr').formset({
+            prefix: '{{ form_oficina.prefix }}',
+            formCssClass: 'dynamic-formset15'
+        });
+        $('#myFormset16Table tbody tr').formset({
+            prefix: '{{ form_insumos.prefix }}',
+            formCssClass: 'dynamic-formset16'
+        });
+        $('#myFormset17Table tbody tr').formset({
+            prefix: '{{ form_plan.prefix }}',
+            formCssClass: 'dynamic-formset17'
         });
 
     })

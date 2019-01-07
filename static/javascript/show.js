@@ -1,6 +1,31 @@
 var active = 0; //Comienza en 0, es decir 0 es la primera parte
-var limite_partes = 8; //Si el limite es 2 partes, la ultima parte sera la parte 1
-var prefijo = "Parte_"
+var limite_partes = 10; //Si el limite es 2 partes, la ultima parte sera la parte 1
+var prefijo = "Parte_";
+
+function check_repair(){
+    var checkExist = setInterval(function() {
+        var el = document.getElementsByClassName("delete-row");
+       if(el!=null){
+          din_repair()
+          clearInterval(checkExist);
+       }
+    }, 100);
+}
+
+function din_repair(){
+
+    for(var i=1;i<limite_partes;i++){
+             var n_element = document.getElementById(prefijo+i.toString());
+
+             if(n_element!=null){
+                  n_element.classList.add("ocultar");
+             }else{
+                 break;
+             }
+
+    }
+
+}
 
 function select_elemento(parte){
     parte = parte.toString();
@@ -12,7 +37,7 @@ function mostrar(parte){
     elemento.classList.remove("ocultar");
 }
 function ocultar(parte){
-    //console.log(parte);
+
     elemento = select_elemento(parte);
     elemento.classList.add("ocultar");
 }

@@ -24,12 +24,7 @@ class DatosSolicitante(models.Model):
                 'invalid')])
 
     cedula = models.CharField(
-        max_length=9,
-        validators=[
-            RegexValidator(
-                re.compile('/^[V|E|J|P][0-9]{5,9}$/'),
-                _('Cédula incorrecta'),
-                'invalid')])
+        max_length=9)
 
     telefono = models.CharField(
         max_length=11,
@@ -111,12 +106,7 @@ class DatosPersonal(models.Model):
                 _('Apellido incorrecto'),
                 'invalid')])
     cedula_eia = models.CharField(
-        max_length=8,
-        validators=[
-            RegexValidator(
-                re.compile('/^[V|E|J|P][0-9]{5,9}$/'),
-                _('Cédula incorrecta'),
-                'invalid')])
+        max_length=9)
     nivel_eia = models.CharField(max_length=40)
     nombre_fisico = models.CharField(
         max_length=60,
@@ -133,12 +123,7 @@ class DatosPersonal(models.Model):
                 _('Apellido incorrecto'),
                 'invalid')])
     cedula_fisico = models.CharField(
-        max_length=8,
-        validators=[
-            RegexValidator(
-                re.compile('/^[V|E|J|P][0-9]{5,9}$/'),
-                _('Cédula incorrecta'),
-                'invalid')])
+        max_length=9)
     nivel_fisico = models.CharField(max_length=40)
     nombre_bio = models.CharField(
         max_length=60,
@@ -155,12 +140,7 @@ class DatosPersonal(models.Model):
                 _('Apellido incorrecto'),
                 'invalid')])
     cedula_bio = models.CharField(
-        max_length=8,
-        validators=[
-            RegexValidator(
-                re.compile('/^[V|E|J|P][0-9]{5,9}$/'),
-                _('Cédula incorrecta'),
-                'invalid')])
+        max_length=9)
     nivel_bio = models.CharField(max_length=40)
     nombre_eco = models.CharField(
         max_length=60,
@@ -177,12 +157,7 @@ class DatosPersonal(models.Model):
                 _('Apellido incorrecto'),
                 'invalid')])
     cedula_eco = models.CharField(
-        max_length=8,
-        validators=[
-            RegexValidator(
-                re.compile('/^[V|E|J|P][0-9]{5,9}$/'),
-                _('Cédula incorrecta'),
-                'invalid')])
+        max_length=9)
     nivel_eco = models.CharField(max_length=40)
     nombre_desa = models.CharField(max_length=60,
         validators=[
@@ -198,12 +173,7 @@ class DatosPersonal(models.Model):
                 _('Apellido incorrecto'),
                 'invalid')])
     cedula_desa = models.CharField(
-        max_length=8,
-        validators=[
-            RegexValidator(
-                re.compile('/^[V|E|J|P][0-9]{5,9}$/'),
-                _('Cédula incorrecta'),
-                'invalid')])
+        max_length=9)
     nivel_desa = models.CharField(max_length=40)
 
 class DatosDocumento(models.Model):
@@ -301,40 +271,47 @@ class TalentoHumano(models.Model):
     cantidad_talento = models.CharField(max_length=100, blank=True)
     tiempo_talento = models.CharField(max_length=100, blank=True)
     honorarios_talento = models.CharField(max_length=100, blank=True)
+    total_talento = models.CharField(max_length=100, blank=True)
 
 class Servicios(models.Model):
     actividad_servicios = models.CharField(max_length=100, blank=True)
     cantidad_servicios = models.CharField(max_length=100, blank=True)
     tiempo_servicios = models.CharField(max_length=100, blank=True)
     monto_servicios = models.CharField(max_length=100, blank=True)
+    total_servicios = models.CharField(max_length=100, blank=True)
 
 class Pasajes(models.Model):
     actividad_pasajes = models.CharField(max_length=100, blank=True)
     cantidad_pasajes = models.CharField(max_length=100, blank=True)
     tiempo_pasajes = models.CharField(max_length=100, blank=True)
     monto_pasajes = models.CharField(max_length=100, blank=True)
+    total_pasajes = models.CharField(max_length=100, blank=True)
 
 class RecursosMateriales(models.Model):
     materiales = models.CharField(max_length=100, blank=True)
     cantidad_materiales = models.CharField(max_length=100, blank=True)
     control_materiales = models.CharField(max_length=100, blank=True)
     monto_materiales = models.CharField(max_length=100, blank=True)
+    total_materiales = models.CharField(max_length=100, blank=True)
 
 class Oficina(models.Model):
     materiales_oficina = models.CharField(max_length=100, blank=True)
     cantidad_oficina = models.CharField(max_length=100, blank=True)
     control_oficina = models.CharField(max_length=100, blank=True)
     monto_oficina = models.CharField(max_length=100, blank=True)
+    total_oficina = models.CharField(max_length=100, blank=True)
 
 class Insumos(models.Model):
     insumos = models.CharField(max_length=100, blank=True)
     cantidad_insumos = models.CharField(max_length=100, blank=True)
     control_insumos = models.CharField(max_length=100, blank=True)
     monto_insumos = models.CharField(max_length=100, blank=True)
+    total_insumos = models.CharField(max_length=100, blank=True)
 
 class PlanInversion(models.Model):
     concepto = models.CharField(max_length=100, blank=True)
     monto_plan = models.CharField(max_length=100, blank=True)
+    total_inversion = models.CharField(max_length=100, blank=True)
 
 class Informacion(models.Model):
     informacion = models.TextField()

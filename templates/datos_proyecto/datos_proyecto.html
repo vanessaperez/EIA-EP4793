@@ -13,262 +13,613 @@
     </div>
 
 
-    <div class="row justify-content-md-center" id="Parte_0">
-        <div class="col-3"></div>
-        <div class="col-6">
-            <div class="signup">
-                <h2>Datos Generales del Proyecto</h2>
-                <form method="POST" action="">
-                  {% csrf_token %}
-                  {{ form_proyecto|crispy }}
-                </form>
-            </div>
-        </div>
-        <div class="col-3"></div>
-    </div>
-
-
-    <div class="row justify-content-md-center ocultar" id="Parte_1">
-        <div class="col-3"></div>
-        <div class="col-6">
-            <div class="signup">
-                <h2>Datos del Solicitante o Promotor</h2>
-
-                  {% csrf_token %}
-                  {{ form_solicitante|crispy }}
-
-            </div>
-        </div>
-        <div class="col-3"></div>
-    </div>
-
-     <div class="row justify-content-md-center ocultar" id="Parte_2">
-         <div class="col-3"></div>
-          <div class="col-6">
-            <div class="signup">
-                <h2>Datos de La Organización</h2>
-                  <form method="post">
-                  {% csrf_token %}
-                  {{ form_organizacion| crispy }}
-                  </form>
-            </div>
-        </div>
-        <div class="col-3"></div>
-    </div>
-
-     <div class="row justify-content-md-center ocultar" id="Parte_3">
-        <div class="col-3"></div>
-        <div class="col-6">
-            <div class="signup">
-                <h2 align="center">Datos del Espacio o Área donde se ejecutará el Proyecto </h2>
-                  <form method="post">
-                  {% csrf_token %}
-                  {{ form_espacio.tenencia_tierra|as_crispy_field }}
-                  {{ form_espacio.ubicacion|as_crispy_field }}
-
-                <h2>Linderos del Área o Espacio</h2>
-
-                    {{ form_espacio.lindero_norte|as_crispy_field }}
-                    {{ form_espacio.lindero_sur|as_crispy_field }}
-                    {{ form_espacio.lindero_este|as_crispy_field }}
-                    {{ form_espacio.lindero_oeste|as_crispy_field }}
-
-                <h2>Coordenadas U.T.M.</h2>
-
-                    {{ form_espacio.coor_norte|as_crispy_field }}
-                    {{ form_espacio.coor_sur|as_crispy_field }}
-                    {{ form_espacio.coor_este|as_crispy_field }}
-                    {{ form_espacio.coor_oeste|as_crispy_field }}
-                  </form>
-            </div>
-        </div>
-        <div class="col-3"></div>
-    </div>
-
-    <div class="row justify-content-md-center ocultar" id="Parte_4">
-        <div class="col-3"></div>
-        <div class="col-6">
-            <div class="signup">
-                <h2>Datos del Personal Responsable del Estudio de Impacto Ambiental </h2>
-                <br>
-                <h4>Especialista del EsIA</h4>
-                  <form method="post">
-                  {% csrf_token %}
-                  {{ form_personal.nombre_eia|as_crispy_field }}
-                  {{ form_personal.apellido_eia|as_crispy_field }}
-                  {{ form_personal.cedula_eia|as_crispy_field }}
-                  {{ form_personal.nivel_eia|as_crispy_field }}
-
-                <br>
-                <hr>
-                <br>
-
-                <h4>Especialista del Medio Físico</h4>
-
-                  {{ form_personal.nombre_fisico|as_crispy_field }}
-                  {{ form_personal.apellido_fisico|as_crispy_field }}
-                  {{ form_personal.cedula_fisico|as_crispy_field }}
-                  {{ form_personal.nivel_fisico|as_crispy_field }}
-
-                <br>
-                <hr>
-                <br>
-
-                <h4>Especialista del Medio Biológico</h4>
-
-                  {{ form_personal.nombre_bio|as_crispy_field }}
-                  {{ form_personal.apellido_bio|as_crispy_field }}
-                  {{ form_personal.cedula_bio|as_crispy_field }}
-                  {{ form_personal.nivel_bio|as_crispy_field }}
-
-                <br>
-                <hr>
-                <br>
-
-                <h4>Especialista del Medio Socioeconómico</h4>
-
-                  {{ form_personal.nombre_eco|as_crispy_field }}
-                  {{ form_personal.apellido_eco|as_crispy_field }}
-                  {{ form_personal.cedula_eco|as_crispy_field }}
-                  {{ form_personal.nivel_eco|as_crispy_field }}
-
-                <br>
-                <hr>
-                <br>
-
-                <h4>Gerente del Proyecto de Desarrollo</h4>
-
-                  {{ form_personal.nombre_desa|as_crispy_field }}
-                  {{ form_personal.apellido_desa|as_crispy_field }}
-                  {{ form_personal.cedula_desa|as_crispy_field }}
-                  {{ form_personal.nivel_desa|as_crispy_field }}
-                  </form>
-            </div>
-        </div>
-        <div class="col-3"></div>
-    </div>
-
-     <div class="row justify-content-md-center ocultar" id="Parte_5">
-        <div class="col-3"></div>
-        <div class="col-6">
-            <div class="signup">
-                <h2>Datos de la elaboración del presente documento</h2>
-                    <form method="post">
-                    {% csrf_token %}
-                    {{ form_documento.fecha | as_crispy_field }}
-                    {{ form_documento.ciudad | as_crispy_field }}
-                    {{ form_documento.estado | as_crispy_field }}
-                    {{ form_documento.pais | as_crispy_field }}
-                    </form>
-            </div>
-        </div>
-        <div class="col-3"></div>
-     </div>
-
-     <div class="row justify-content-md-center ocultar" id="Parte_6">
-        <div class="col-3"></div>
-        <div class="col-6">
-            <div class="signup">
-                <h2>Descripción del Proyecto</h2>
-                <h3>Objetivos del Estudio de Impacto Ambiental</h3>
-                    <form method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {{ form_descripcion|crispy }}
-                    </form>
-            </div>
-        </div>
-         <div class="col-3"></div>
-     </div>
-
-     <div class="row justify-content-md-center ocultar" id="Parte_7">
+     <div class="row justify-content-md-center">
         <div class="col-2"></div>
         <div class="col-9">
-            <div class="signup">
-                <h2>Caracterización Ambiental</h2>
-                <h3 align="center">Medio Físico</h3>
-                <br>
-                <h3>Suelo</h3>
-                   <form method="post">
-                   {% csrf_token %}
-                   {{ form_suelo.management_form }}
-                   <table id="myFormset1Table" class="table table-bordered"  style="width: 710px">
-                          <thead>
-                            <tr style="background-color: #77933c;color: white;">
-                              <th scope="col" class="text-center">Características</th>
-                              <th scope="col" class="text-center">Subcaracterísticas</th>
-                              <th scope="col" class="text-center">Atributos</th>
-                              <th scope="col" class="text-center">Comentarios</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {% for obj in form_suelo %}
-                            <tr>
-                              <td>{{ obj.caracteristicas_suelo }}</td>
-                              <td>{{ obj.sub_suelo }}</td>
-                              <td>{{ obj.atributos_suelo }}</td>
-                              <td>{{ obj.comentarios_suelo }}</td>
-                            </tr>
-                            {% endfor %}
-                          </tbody>
-                   </table>
-                    <br>
-                    <hr>
-                    <br>
-                     <h2>Agua</h2>
-                     {{ form_agua.management_form }}
-                     <table id="myFormset2Table" class="table table-bordered" style="width: 710px">
-                          <thead>
-                            <tr style="background-color: #77933c;color: white;">
-                              <th scope="col" class="text-center">Características</th>
-                              <th scope="col" class="text-center">Subcaracterísticas</th>
-                              <th scope="col" class="text-center">Atributos</th>
-                              <th scope="col" class="text-center">Comentarios</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {% for obj in form_agua %}
-                            <tr>
-                              <td>{{ obj.caracteristicas_agua }}</td>
-                              <td>{{ obj.sub_agua }}</td>
-                              <td>{{ obj.atributos_agua }}</td>
-                              <td>{{ obj.comentarios_agua }}</td>
-                            </tr>
-                            {% endfor %}
-                          </tbody>
-                     </table>
-                     <br>
-                     <hr>
-                     <br>
-                     <h2>Aire</h2>
-                     {{ form_aire.management_form }}
-                     <table id="myFormset3Table" class="table table-bordered" style="width: 710px">
-                          <thead>
-                            <tr style="background-color: #77933c;color: white;">
-                              <th scope="col" class="text-center">Características</th>
-                              <th scope="col" class="text-center">Subcaracterísticas</th>
-                              <th scope="col" class="text-center">Atributos</th>
-                              <th scope="col" class="text-center">Comentarios</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {% for obj in form_aire %}
-                            <tr>
-                              <td>{{ obj.caracteristicas_aire }}</td>
-                              <td>{{ obj.sub_aire }}</td>
-                              <td>{{ obj.atributos_aire }}</td>
-                              <td>{{ obj.comentarios_aire }}</td>
-                            </tr>
-                            {% endfor %}
-                          </tbody>
-                   </table>
-                    <button type="submit" class="btn btn-primary">Enviar</button>
-                </form>
-            </div>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="col-3"></div>
+                    <div class="col-9">
+                        <div class="signup"  id="Parte_0">
+                             <h2>Datos Generales del Proyecto</h2>
+                             {{ form_proyecto|crispy }}
+                        </div>
+
+                        <div class="signup"  id="Parte_">
+                            <h2>Datos del Solicitante o Promotor</h2>
+                             {{ form_solicitante|crispy }}
+                        </div>
+
+                         <div class="signup"  id="Parte_">
+                            <h2>Datos de La Organización</h2>
+                            {{ form_organizacion| crispy }}
+                        </div>
+
+                         <div class="signup" id="Parte_">
+                            <h2 align="center">Datos del Espacio o Área donde se ejecutará el Proyecto </h2>
+
+                              {{ form_espacio.tenencia_tierra|as_crispy_field }}
+                              {{ form_espacio.ubicacion|as_crispy_field }}
+
+                            <h2>Linderos del Área o Espacio</h2>
+
+                                {{ form_espacio.lindero_norte|as_crispy_field }}
+                                {{ form_espacio.lindero_sur|as_crispy_field }}
+                                {{ form_espacio.lindero_este|as_crispy_field }}
+                                {{ form_espacio.lindero_oeste|as_crispy_field }}
+
+                            <h2>Coordenadas U.T.M.</h2>
+
+                                {{ form_espacio.coor_norte|as_crispy_field }}
+                                {{ form_espacio.coor_sur|as_crispy_field }}
+                                {{ form_espacio.coor_este|as_crispy_field }}
+                                {{ form_espacio.coor_oeste|as_crispy_field }}
+                         </div>
+
+                          <div class="signup" id="Parte_">
+                                <h2>Datos del Personal Responsable del Estudio de Impacto Ambiental </h2>
+                                <br>
+                                <h4>Especialista del EsIA</h4>
+
+                                  {{ form_personal.nombre_eia|as_crispy_field }}
+                                  {{ form_personal.apellido_eia|as_crispy_field }}
+                                  {{ form_personal.cedula_eia|as_crispy_field }}
+                                  {{ form_personal.nivel_eia|as_crispy_field }}
+
+                                <br>
+                                <hr>
+                                <br>
+
+                                <h4>Especialista del Medio Físico</h4>
+
+                                  {{ form_personal.nombre_fisico|as_crispy_field }}
+                                  {{ form_personal.apellido_fisico|as_crispy_field }}
+                                  {{ form_personal.cedula_fisico|as_crispy_field }}
+                                  {{ form_personal.nivel_fisico|as_crispy_field }}
+
+                                <br>
+                                <hr>
+                                <br>
+
+                                <h4>Especialista del Medio Biológico</h4>
+
+                                  {{ form_personal.nombre_bio|as_crispy_field }}
+                                  {{ form_personal.apellido_bio|as_crispy_field }}
+                                  {{ form_personal.cedula_bio|as_crispy_field }}
+                                  {{ form_personal.nivel_bio|as_crispy_field }}
+
+                                <br>
+                                <hr>
+                                <br>
+
+                                <h4>Especialista del Medio Socioeconómico</h4>
+
+                                  {{ form_personal.nombre_eco|as_crispy_field }}
+                                  {{ form_personal.apellido_eco|as_crispy_field }}
+                                  {{ form_personal.cedula_eco|as_crispy_field }}
+                                  {{ form_personal.nivel_eco|as_crispy_field }}
+
+                                <br>
+                                <hr>
+                                <br>
+
+                                <h4>Gerente del Proyecto de Desarrollo</h4>
+
+                                  {{ form_personal.nombre_desa|as_crispy_field }}
+                                  {{ form_personal.apellido_desa|as_crispy_field }}
+                                  {{ form_personal.cedula_desa|as_crispy_field }}
+                                  {{ form_personal.nivel_desa|as_crispy_field }}
+                          </div>
+
+                          <div class="signup" id="Parte_">
+                                <h2>Datos de la elaboración del presente documento</h2>
+                                    {{ form_documento.fecha | as_crispy_field }}
+                                    {{ form_documento.ciudad | as_crispy_field }}
+                                    {{ form_documento.estado | as_crispy_field }}
+                                    {{ form_documento.pais | as_crispy_field }}
+                          </div>
+
+                          <div class="signup" id="Parte_">
+                                <h2>Descripción del Proyecto</h2>
+                                <h3>Objetivos del Estudio de Impacto Ambiental</h3>
+                                    {{ form_descripcion|crispy }}
+                          </div>
+
+                          <div class="signup" id="Parte_">
+                                <h2 align="center">Caracterización Ambiental</h2>
+                                <h3 align="center">Medio Físico</h3>
+                                <br>
+                                <h3>Suelo</h3>
+                               {{ form_suelo.management_form }}
+                               <table id="myFormset1Table" class="table table-bordered"  style="width: 650px;">
+                                      <thead>
+                                        <tr style="background-color: #77933c;color: white;">
+                                          <th scope="col" class="text-center">Características</th>
+                                          <th scope="col" class="text-center">Subcaracterísticas</th>
+                                          <th scope="col" class="text-center">Atributos</th>
+                                          <th scope="col" class="text-center">Comentarios</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        {% for obj in form_suelo %}
+                                        <tr>
+                                          <td>{{ obj.caracteristicas_suelo }}</td>
+                                          <td>{{ obj.sub_suelo }}</td>
+                                          <td>{{ obj.atributos_suelo }}</td>
+                                          <td>{{ obj.comentarios_suelo }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                      </tbody>
+                               </table>
+                          </div>
+
+                          <div class="signup" id="Parte_">
+                                 <h2>Agua</h2>
+                                 {{ form_agua.management_form }}
+                                 <table id="myFormset2Table" class="table table-bordered" style="width: 650px;">
+                                      <thead>
+                                        <tr style="background-color: #77933c;color: white;">
+                                          <th scope="col" class="text-center">Características</th>
+                                          <th scope="col" class="text-center">Subcaracterísticas</th>
+                                          <th scope="col" class="text-center">Atributos</th>
+                                          <th scope="col" class="text-center">Comentarios</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        {% for obj in form_agua %}
+                                        <tr>
+                                          <td>{{ obj.caracteristicas_agua }}</td>
+                                          <td>{{ obj.sub_agua }}</td>
+                                          <td>{{ obj.atributos_agua }}</td>
+                                          <td>{{ obj.comentarios_agua }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                      </tbody>
+                                 </table>
+                          </div>
+
+                          <div class="signup" id="Parte_">
+                                 <h2>Aire</h2>
+                                 {{ form_aire.management_form }}
+                                 <table id="myFormset3Table" class="table table-bordered" style="width: 650px;">
+                                      <thead>
+                                        <tr style="background-color: #77933c;color: white;">
+                                          <th scope="col" class="text-center">Características</th>
+                                          <th scope="col" class="text-center">Subcaracterísticas</th>
+                                          <th scope="col" class="text-center">Atributos</th>
+                                          <th scope="col" class="text-center">Comentarios</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        {% for obj in form_aire %}
+                                        <tr>
+                                          <td>{{ obj.caracteristicas_aire }}</td>
+                                          <td>{{ obj.sub_aire }}</td>
+                                          <td>{{ obj.atributos_aire }}</td>
+                                          <td>{{ obj.comentarios_aire }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                      </tbody>
+                                 </table>
+                          </div>
+
+                          <div class="signup" id="Parte_">
+                                <h2>Medio Físico</h2>
+                                    {{ form_fisico|crispy }}
+                          </div>
+
+                          <div class="signup" id="Parte_">
+                                 <h2>Forestal</h2>
+                                 {{ form_forestal.management_form }}
+                                 <table id="myFormset4Table" class="table table-bordered" style="width: 650px;">
+                                      <thead>
+                                        <tr style="background-color: #77933c;color: white;">
+                                          <th scope="col" class="text-center">Características</th>
+                                          <th scope="col" class="text-center">Subcaracterísticas</th>
+                                          <th scope="col" class="text-center">Atributos</th>
+                                          <th scope="col" class="text-center">Comentarios</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        {% for obj in form_forestal %}
+                                        <tr>
+                                          <td>{{ obj.caracteristicas_forestal }}</td>
+                                          <td>{{ obj.sub_forestal }}</td>
+                                          <td>{{ obj.atributos_forestal }}</td>
+                                          <td>{{ obj.comentarios_forestal }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                      </tbody>
+                                 </table>
+                          </div>
+
+                          <div class="signup" id="Parte_">
+                                 <h2>Flora</h2>
+                                 {{ form_flora.management_form }}
+                                 <table id="myFormset5Table" class="table table-bordered" style="width: 650px;">
+                                      <thead>
+                                        <tr style="background-color: #77933c;color: white;">
+                                          <th scope="col" class="text-center">Características</th>
+                                          <th scope="col" class="text-center">Subcaracterísticas</th>
+                                          <th scope="col" class="text-center">Atributos</th>
+                                          <th scope="col" class="text-center">Comentarios</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        {% for obj in form_flora %}
+                                        <tr>
+                                          <td>{{ obj.caracteristicas_flora }}</td>
+                                          <td>{{ obj.sub_flora }}</td>
+                                          <td>{{ obj.atributos_flora }}</td>
+                                          <td>{{ obj.comentarios_flora }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                      </tbody>
+                                 </table>
+                          </div>
+
+                           <div class="signup" id="Parte_">
+                                 <h2>Fauna</h2>
+                                 {{ form_fauna.management_form }}
+                                 <table id="myFormset6Table" class="table table-bordered" style="width: 650px;">
+                                      <thead>
+                                        <tr style="background-color: #77933c;color: white;">
+                                          <th scope="col" class="text-center">Características</th>
+                                          <th scope="col" class="text-center">Subcaracterísticas</th>
+                                          <th scope="col" class="text-center">Atributos</th>
+                                          <th scope="col" class="text-center">Comentarios</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        {% for obj in form_fauna%}
+                                        <tr>
+                                          <td>{{ obj.caracteristicas_fauna }}</td>
+                                          <td>{{ obj.sub_fauna }}</td>
+                                          <td>{{ obj.atributos_fauna }}</td>
+                                          <td>{{ obj.comentarios_fauna }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                      </tbody>
+                                 </table>
+                          </div>
+
+                          <div class="signup" id="Parte_">
+                                <h2>Medio Biológico</h2>
+                                    {{ form_bio | crispy }}
+                          </div>
+
+                           <div class="signup" id="Parte_">
+                                 <h2>Social</h2>
+                                 {{ form_social.management_form }}
+                                 <table id="myFormset7Table" class="table table-bordered" style="width: 650px;">
+                                      <thead>
+                                        <tr style="background-color: #77933c;color: white;">
+                                          <th scope="col" class="text-center">Características</th>
+                                          <th scope="col" class="text-center">Subcaracterísticas</th>
+                                          <th scope="col" class="text-center">Atributos</th>
+                                          <th scope="col" class="text-center">Comentarios</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        {% for obj in form_social%}
+                                        <tr>
+                                          <td>{{ obj.caracteristicas_social }}</td>
+                                          <td>{{ obj.sub_social }}</td>
+                                          <td>{{ obj.atributos_social }}</td>
+                                          <td>{{ obj.comentarios_social }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                      </tbody>
+                                 </table>
+                           </div>
+
+                            <div class="signup" id="Parte_">
+                                 <h2>Económica</h2>
+                                 {{ form_economica.management_form }}
+                                 <table id="myFormset8Table" class="table table-bordered" style="width: 650px;">
+                                      <thead>
+                                        <tr style="background-color: #77933c;color: white;">
+                                          <th scope="col" class="text-center">Características</th>
+                                          <th scope="col" class="text-center">Subcaracterísticas</th>
+                                          <th scope="col" class="text-center">Atributos</th>
+                                          <th scope="col" class="text-center">Comentarios</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        {% for obj in form_economica%}
+                                        <tr>
+                                          <td>{{ obj.caracteristicas_eco }}</td>
+                                          <td>{{ obj.sub_economica }}</td>
+                                          <td>{{ obj.atributos_eco }}</td>
+                                          <td>{{ obj.comentarios_eco }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                      </tbody>
+                                 </table>
+                            </div>
+
+                            <div class="signup" id="Parte_">
+                                 <h2>Cultural</h2>
+                                 {{ form_cultural.management_form }}
+                                 <table id="myFormset9Table" class="table table-bordered" style="width: 650px;">
+                                      <thead>
+                                        <tr style="background-color: #77933c;color: white;">
+                                          <th scope="col" class="text-center">Características</th>
+                                          <th scope="col" class="text-center">Subcaracterísticas</th>
+                                          <th scope="col" class="text-center">Atributos</th>
+                                          <th scope="col" class="text-center">Comentarios</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        {% for obj in form_cultural%}
+                                        <tr>
+                                          <td>{{ obj.caracteristicas_cultural }}</td>
+                                          <td>{{ obj.sub_cultural }}</td>
+                                          <td>{{ obj.atributos_cultural }}</td>
+                                          <td>{{ obj.comentarios_cultural }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                      </tbody>
+                                 </table>
+                            </div>
+
+                            <div class="signup" id="Parte_">
+                                <h2>Medio Sociocultural</h2>
+                                    {{ form_sociocultural | crispy }}
+                            </div>
+
+                             <div class="signup" id="Parte_">
+                                 <h2>Actividades con Potencial a la Generación de Impactos</h2>
+                                 {{ form_actividad.management_form }}
+                                 <table id="myFormset10Table" class="table table-bordered" style="width: 620px;">
+                                      <thead>
+                                        <tr style="background-color: #77933c;color: white;">
+                                          <th scope="col" class="text-center">Proceso</th>
+                                          <th scope="col" class="text-center">Actividad</th>
+                                          <th scope="col" class="text-center">Amenazas</th>
+                                          <th scope="col" class="text-center">Vulnerabilidad</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        {% for obj in form_actividad%}
+                                        <tr>
+                                          <td>{{ obj.proceso }}</td>
+                                          <td>{{ obj.actividad }}</td>
+                                          <td>{{ obj.amenazas }}</td>
+                                          <td>{{ obj.vulnerabilidad }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                      </tbody>
+                                 </table>
+                             </div>
+
+                             <div class="signup" id="Parte_">
+                                <h2>Medio Comentarios </h2>
+                                    {{ form_comentarios | crispy }}
+                            </div>
+
+                             <div class="signup" id="Parte_">
+                                <h2>Cronograma de Planificación</h2>
+                                    {{ form_diagrama | crispy }}
+                            </div>
+
+                            <div class="signup" id="Parte_">
+                                 <h2>Inversiones Estimadas</h2>
+                                 <h2>Talento Humano</h2>
+                                 {{ form_talento.management_form }}
+                                 <table id="myFormset11Table" class="table table-bordered" style="width: 620px;">
+                                      <thead>
+                                        <tr style="background-color: #77933c;color: white;">
+                                          <th scope="col" class="text-center">Actividad</th>
+                                          <th scope="col" class="text-center">Cantidad</th>
+                                          <th scope="col" class="text-center">Tiempo</th>
+                                          <th scope="col" class="text-center">Honorarios</th>
+                                          <th scope="col" class="text-center">Total</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        {% for obj in form_talento%}
+                                        <tr>
+                                          <td>{{ obj.actividad_talento }}</td>
+                                          <td>{{ obj.cantidad_talento }}</td>
+                                          <td>{{ obj.tiempo_talento }}</td>
+                                          <td>{{ obj.honorarios_talento}}</td>
+                                          <td>{{ obj.total_talento }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                      </tbody>
+                                 </table>
+                             </div>
+
+                            <div class="signup" id="Parte_">
+                                 <h2>Inversiones Estimadas</h2>
+                                 <h2>Servicios Profesionales y Técnicos</h2>
+                                 {{ form_servicio.management_form }}
+                                 <table id="myFormset12Table" class="table table-bordered" style="width: 620px;">
+                                      <thead>
+                                        <tr style="background-color: #77933c;color: white;">
+                                          <th scope="col" class="text-center">Actividad</th>
+                                          <th scope="col" class="text-center">Cantidad</th>
+                                          <th scope="col" class="text-center">Tiempo</th>
+                                          <th scope="col" class="text-center">Monto (Bs)</th>
+                                          <th scope="col" class="text-center">Total</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        {% for obj in form_servicio%}
+                                        <tr>
+                                          <td>{{ obj.actividad_servicios }}</td>
+                                          <td>{{ obj.cantidad_servicios }}</td>
+                                          <td>{{ obj.tiempo_servicios }}</td>
+                                          <td>{{ obj.monto_servicios}}</td>
+                                          <td>{{ obj.total_servicios }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                      </tbody>
+                                 </table>
+                            </div>
+
+                             <div class="signup" id="Parte_">
+                                 <h2>Inversiones Estimadas</h2>
+                                 <h2>Pasajes</h2>
+                                 {{ form_pasaje.management_form }}
+                                 <table id="myFormset13Table" class="table table-bordered" style="width: 620px;">
+                                      <thead>
+                                        <tr style="background-color: #77933c;color: white;">
+                                          <th scope="col" class="text-center">Actividad</th>
+                                          <th scope="col" class="text-center">Cantidad</th>
+                                          <th scope="col" class="text-center">Tiempo</th>
+                                          <th scope="col" class="text-center">Monto (Bs)</th>
+                                          <th scope="col" class="text-center">Total</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        {% for obj in form_pasaje%}
+                                        <tr>
+                                          <td>{{ obj.actividad_pasajes }}</td>
+                                          <td>{{ obj.cantidad_pasajes }}</td>
+                                          <td>{{ obj.tiempo_pasajes }}</td>
+                                          <td>{{ obj.monto_pasajes}}</td>
+                                          <td>{{ obj.total_pasajes }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                      </tbody>
+                                 </table>
+                             </div>
+
+                            <div class="signup" id="Parte_">
+                                 <h2>Inversiones Estimadas</h2>
+                                 <h2>Recursos Materiales</h2>
+                                 {{ form_recursos.management_form }}
+                                 <table id="myFormset14Table" class="table table-bordered" style="width: 620px;">
+                                      <thead>
+                                        <tr style="background-color: #77933c;color: white;">
+                                          <th scope="col" class="text-center">Materiales</th>
+                                          <th scope="col" class="text-center">Cantidad</th>
+                                          <th scope="col" class="text-center">C/U</th>
+                                          <th scope="col" class="text-center">Monto (Bs)</th>
+                                          <th scope="col" class="text-center">Total</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        {% for obj in form_recursos%}
+                                        <tr>
+                                          <td>{{ obj.materiales }}</td>
+                                          <td>{{ obj.cantidad_materiales }}</td>
+                                          <td>{{ obj.control_materiales }}</td>
+                                          <td>{{ obj.monto_materiales}}</td>
+                                          <td>{{ obj.total_materiales }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                      </tbody>
+                                 </table>
+                             </div>
+
+                            <div class="signup" id="Parte_">
+                                 <h2>Inversiones Estimadas</h2>
+                                 <h2>Materiales de Oficina</h2>
+                                 {{ form_oficina.management_form }}
+                                 <table id="myFormset15Table" class="table table-bordered" style="width: 620px;">
+                                      <thead>
+                                        <tr style="background-color: #77933c;color: white;">
+                                          <th scope="col" class="text-center">Materiales</th>
+                                          <th scope="col" class="text-center">Cantidad</th>
+                                          <th scope="col" class="text-center">C/U</th>
+                                          <th scope="col" class="text-center">Monto (Bs)</th>
+                                          <th scope="col" class="text-center">Total</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        {% for obj in form_oficina%}
+                                        <tr>
+                                          <td>{{ obj.materiales_oficina }}</td>
+                                          <td>{{ obj.cantidad_oficina }}</td>
+                                          <td>{{ obj.control_oficina }}</td>
+                                          <td>{{ obj.monto_oficina}}</td>
+                                          <td>{{ obj.total_oficina }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                      </tbody>
+                                 </table>
+                             </div>
+
+                            <div class="signup" id="Parte_">
+                                 <h2>Inversiones Estimadas</h2>
+                                 <h2>Insumos</h2>
+                                 {{ form_insumos.management_form }}
+                                 <table id="myFormset16Table" class="table table-bordered" style="width: 620px;">
+                                      <thead>
+                                        <tr style="background-color: #77933c;color: white;">
+                                          <th scope="col" class="text-center">Insumos</th>
+                                          <th scope="col" class="text-center">Cantidad</th>
+                                          <th scope="col" class="text-center">C/U</th>
+                                          <th scope="col" class="text-center">Monto (Bs)</th>
+                                          <th scope="col" class="text-center">Total</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        {% for obj in form_insumos%}
+                                        <tr>
+                                          <td>{{ obj.insumos }}</td>
+                                          <td>{{ obj.cantidad_insumos }}</td>
+                                          <td>{{ obj.control_insumos }}</td>
+                                          <td>{{ obj.monto_insumos }}</td>
+                                          <td>{{ obj.total_insumos}}</td>
+                                        </tr>
+                                        {% endfor %}
+                                      </tbody>
+                                 </table>
+                             </div>
+
+                            <div class="signup" id="Parte_">
+                                 <h2>Inversiones Estimadas</h2>
+                                 <h2>Plan de Inversión</h2>
+                                 {{ form_plan.management_form }}
+                                 <table id="myFormset17Table" class="table table-bordered" style="width: 620px;">
+                                      <thead>
+                                        <tr style="background-color: #77933c;color: white;">
+                                          <th scope="col" class="text-center">Concepto</th>
+                                          <th scope="col" class="text-center">Monto (Bs)</th>
+                                          <th scope="col" class="text-center">Total de Inversión</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        {% for obj in form_plan%}
+                                        <tr>
+                                          <td>{{ obj.concepto }}</td>
+                                          <td>{{ obj.monto_plan }}</td>
+                                          <td>{{ obj.total_inversion}}</td>
+                                        </tr>
+                                        {% endfor %}
+                                      </tbody>
+                                 </table>
+                            </div>
+
+                             <div class="signup" id="Parte_">
+                                <h2>Información Relevante para La Evaluación del Programa o Proyecto de EIA</h2>
+                                    {{ form_informacion | crispy }}
+                            </div>
+
+                             <div class="signup" id="Parte_">
+                                <h2>Aval del Responsable del ESIA</h2>
+                                    {{ form_responsable | crispy }}
+                            </div>
+
+                          <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+
+                 </form>
+
         </div>
         <div class="col-1"></div>
-      </div>
+     </div>
 
 
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {       check_repair();       });
+    </script>
 
 
 {% endblock %}
