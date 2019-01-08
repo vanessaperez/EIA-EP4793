@@ -49,7 +49,7 @@ def datos_proyecto(request):
         form_sociocultural = ConclusionCulturalForm(request.POST, prefix='sociocultural')
         form_actividad = ActividadFormSet(request.POST, prefix='actividad')
         form_comentarios = ComentariosForm(request.POST, prefix='comentario')
-        form_diagrama = DiagramaForm(request.POST, prefix='diagrama')
+        form_diagrama = DiagramaForm(request.POST, request.FILES, prefix='diagrama')
         form_talento = TalentoFormSet(request.POST, prefix='talento')
         form_servicio = ServicioFormSet(request.POST, prefix='servicio')
         form_pasaje = PasajeFormSet(request.POST, prefix='pasaje')

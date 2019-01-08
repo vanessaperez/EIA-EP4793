@@ -42,7 +42,7 @@ class SolicitanteForm(forms.ModelForm):
             'email': 'E-mail'
         }
         widgets = {
-            'cedula': forms.TextInput(attrs={'placeholder': 'V12345678'})
+            'cedula': forms.TextInput(attrs={'placeholder': 'V-12345678'})
         }
 
 class OrganizacionForm(forms.ModelForm):
@@ -128,11 +128,11 @@ class DatosPersonalForm(forms.ModelForm):
         }
 
         widgets = {
-            'cedula_eia': forms.TextInput(attrs={'placeholder': 'V12345678'}),
-            'cedula_fisico': forms.TextInput(attrs={'placeholder': 'V12345678'}),
-            'cedula_bio': forms.TextInput(attrs={'placeholder': 'V12345678'}),
-            'cedula_eco': forms.TextInput(attrs={'placeholder': 'V12345678'}),
-            'cedula_desa': forms.TextInput(attrs={'placeholder': 'V12345678'}),
+            'cedula_eia': forms.TextInput(attrs={'placeholder': 'V-12345678'}),
+            'cedula_fisico': forms.TextInput(attrs={'placeholder': 'V-12345678'}),
+            'cedula_bio': forms.TextInput(attrs={'placeholder': 'V-12345678'}),
+            'cedula_eco': forms.TextInput(attrs={'placeholder': 'V-12345678'}),
+            'cedula_desa': forms.TextInput(attrs={'placeholder': 'V-12345678'}),
 
         }
 
@@ -535,4 +535,8 @@ class ResponsableForm(forms.ModelForm):
             'nivel_academico': 'Nivel Académico',
             'fecha': 'Fecha',
             'ciudad': 'Ciudad',
+        }
+
+        widgets = {
+            'fecha': forms.DateInput(attrs={'class': 'datepicker'}),
         }

@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, UserManager
 from django.core.validators import RegexValidator
+import re
 
 
 class CustomUserManager(UserManager):
@@ -10,7 +11,7 @@ class CustomUserManager(UserManager):
 class CustomUser(AbstractUser):
     objects = CustomUserManager()
     doc_identidad = models.CharField(max_length=10,
-                                     validators=[RegexValidator(r'^[VEF]-\d+$',
+                                     validators=[RegexValidator(re.compile('/^[V|E|J|P]-[0-9]{5,9}$/'),
                                                                 'Formato de documento de identidad'
                                                                 ' inválido. Los números deben '
                                                                 'estar precedidos por V- o E-.'

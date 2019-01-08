@@ -24,7 +24,13 @@ class DatosSolicitante(models.Model):
                 'invalid')])
 
     cedula = models.CharField(
-        max_length=9)
+        max_length=10,
+        validators=[
+            RegexValidator(
+                re.compile('/^[V|E|J|P]-[0-9]{5,9}$/'),
+                _('Cédula incorrecta'),
+                'invalid')])
+
 
     telefono = models.CharField(
         max_length=11,
@@ -106,7 +112,12 @@ class DatosPersonal(models.Model):
                 _('Apellido incorrecto'),
                 'invalid')])
     cedula_eia = models.CharField(
-        max_length=9)
+        max_length=10,
+        validators=[
+            RegexValidator(
+                re.compile('/^[V|E|J|P]-[0-9]{5,9}$/'),
+                _('Cédula incorrecta'),
+                'invalid')])
     nivel_eia = models.CharField(max_length=40)
     nombre_fisico = models.CharField(
         max_length=60,
@@ -123,7 +134,12 @@ class DatosPersonal(models.Model):
                 _('Apellido incorrecto'),
                 'invalid')])
     cedula_fisico = models.CharField(
-        max_length=9)
+        max_length=10,
+        validators=[
+            RegexValidator(
+                re.compile('/^[V|E|J|P]-[0-9]{5,9}$/'),
+                _('Cédula incorrecta'),
+                'invalid')])
     nivel_fisico = models.CharField(max_length=40)
     nombre_bio = models.CharField(
         max_length=60,
@@ -140,7 +156,12 @@ class DatosPersonal(models.Model):
                 _('Apellido incorrecto'),
                 'invalid')])
     cedula_bio = models.CharField(
-        max_length=9)
+        max_length=10,
+        validators=[
+            RegexValidator(
+                re.compile('/^[V|E|J|P]-[0-9]{5,9}$/'),
+                _('Cédula incorrecta'),
+                'invalid')])
     nivel_bio = models.CharField(max_length=40)
     nombre_eco = models.CharField(
         max_length=60,
@@ -157,7 +178,12 @@ class DatosPersonal(models.Model):
                 _('Apellido incorrecto'),
                 'invalid')])
     cedula_eco = models.CharField(
-        max_length=9)
+        max_length=10,
+        validators=[
+            RegexValidator(
+                re.compile('/^[V|E|J|P]-[0-9]{5,9}$/'),
+                _('Cédula incorrecta'),
+                'invalid')])
     nivel_eco = models.CharField(max_length=40)
     nombre_desa = models.CharField(max_length=60,
         validators=[
@@ -173,7 +199,12 @@ class DatosPersonal(models.Model):
                 _('Apellido incorrecto'),
                 'invalid')])
     cedula_desa = models.CharField(
-        max_length=9)
+        max_length=10,
+        validators=[
+            RegexValidator(
+                re.compile('/^[V|E|J|P]-[0-9]{5,9}$/'),
+                _('Cédula incorrecta'),
+                'invalid')])
     nivel_desa = models.CharField(max_length=40)
 
 class DatosDocumento(models.Model):
@@ -317,10 +348,23 @@ class Informacion(models.Model):
     informacion = models.TextField()
 
 class Responsable(models.Model):
-    nombre = models.CharField(max_length=100)
-    apellido = models.CharField(max_length=100)
+    nombre = models.CharField(
+        max_length=60,
+        validators=[
+            RegexValidator(
+                re.compile(r'^[\w+\s]+$'),
+                _('Nombre incorrecto'),
+                'invalid')])
+
+    apellido = models.CharField(
+        max_length=60,
+        validators=[
+            RegexValidator(
+                re.compile(r'^[\w+\s]+$'),
+                _('Apellido incorrecto'),
+                'invalid')])
     nivel_academico = models.CharField(max_length=100)
-    fecha = models.CharField(max_length=100)
+    fecha = models.DateField()
     ciudad = models.CharField(max_length=100)
 
 
