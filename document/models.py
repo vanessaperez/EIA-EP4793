@@ -27,9 +27,12 @@ class DatosSolicitante(models.Model):
         max_length=10,
         validators=[
             RegexValidator(
-                re.compile('/^[V|E|J|P]-[0-9]{5,9}$/'),
-                _('Cédula incorrecta'),
-                'invalid')])
+                r'^[VEF]-\d+$',
+                'Formato de documento de identidad'
+                ' inválido. Los números deben '
+                'estar precedidos por V- o E-.'
+
+            )])
 
 
     telefono = models.CharField(
@@ -114,10 +117,11 @@ class DatosPersonal(models.Model):
     cedula_eia = models.CharField(
         max_length=10,
         validators=[
-            RegexValidator(
-                re.compile('/^[V|E|J|P]-[0-9]{5,9}$/'),
-                _('Cédula incorrecta'),
-                'invalid')])
+            RegexValidator(r'^[VEF]-\d+$',
+                'Formato de documento de identidad'
+                ' inválido. Los números deben '
+                'estar precedidos por V- o E-.'
+                )])
     nivel_eia = models.CharField(max_length=40)
     nombre_fisico = models.CharField(
         max_length=60,
@@ -136,10 +140,10 @@ class DatosPersonal(models.Model):
     cedula_fisico = models.CharField(
         max_length=10,
         validators=[
-            RegexValidator(
-                re.compile('/^[V|E|J|P]-[0-9]{5,9}$/'),
-                _('Cédula incorrecta'),
-                'invalid')])
+            RegexValidator(r'^[VEF]-\d+$',
+                'Formato de documento de identidad'
+                ' inválido. Los números deben '
+                'estar precedidos por V- o E-.')])
     nivel_fisico = models.CharField(max_length=40)
     nombre_bio = models.CharField(
         max_length=60,
@@ -158,10 +162,10 @@ class DatosPersonal(models.Model):
     cedula_bio = models.CharField(
         max_length=10,
         validators=[
-            RegexValidator(
-                re.compile('/^[V|E|J|P]-[0-9]{5,9}$/'),
-                _('Cédula incorrecta'),
-                'invalid')])
+            RegexValidator(r'^[VEF]-\d+$',
+                'Formato de documento de identidad'
+                ' inválido. Los números deben '
+                'estar precedidos por V- o E-.')])
     nivel_bio = models.CharField(max_length=40)
     nombre_eco = models.CharField(
         max_length=60,
@@ -180,10 +184,11 @@ class DatosPersonal(models.Model):
     cedula_eco = models.CharField(
         max_length=10,
         validators=[
-            RegexValidator(
-                re.compile('/^[V|E|J|P]-[0-9]{5,9}$/'),
-                _('Cédula incorrecta'),
-                'invalid')])
+            RegexValidator(r'^[VEF]-\d+$',
+                'Formato de documento de identidad'
+                ' inválido. Los números deben '
+                'estar precedidos por V- o E-.'
+                )])
     nivel_eco = models.CharField(max_length=40)
     nombre_desa = models.CharField(max_length=60,
         validators=[
@@ -201,10 +206,11 @@ class DatosPersonal(models.Model):
     cedula_desa = models.CharField(
         max_length=10,
         validators=[
-            RegexValidator(
-                re.compile('/^[V|E|J|P]-[0-9]{5,9}$/'),
-                _('Cédula incorrecta'),
-                'invalid')])
+            RegexValidator(r'^[VEF]-\d+$',
+                'Formato de documento de identidad'
+                ' inválido. Los números deben '
+                'estar precedidos por V- o E-.'
+                )])
     nivel_desa = models.CharField(max_length=40)
 
 class DatosDocumento(models.Model):
