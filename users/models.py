@@ -21,6 +21,8 @@ class CustomUser(AbstractUser):
                                      verbose_name='Documento de Identidad',
                                      unique=True)
     email = models.EmailField('Dirección de correo electrónico', unique=True)
+    # Guarda la primary key del proyecto habilitado para editar
+    proyecto_seleccionado = models.IntegerField(default=-1)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name', 'doc_identidad']
 
