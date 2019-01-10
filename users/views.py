@@ -1,11 +1,15 @@
 from django.shortcuts import render, redirect
-from .forms import CustomUserCreationForm, CustomUserChangeForm
+from .forms import *
 from django.views.generic import TemplateView
 from django.core.mail import EmailMessage
 from .models import CustomUser
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.list import ListView
+from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
 
 class HomePageView(TemplateView):
@@ -55,16 +59,39 @@ def profile(request):
     return render(request, 'profile.html')
 
 
-def edit_user(request, usuario):
-    user = CustomUser.objects.get(pk=usuario)
-    if request.method == 'POST':
-        u_form = CustomUserChangeForm(request.POST, instance=user)
-        if u_form.is_valid():
-            user = u_form.save(commit=False)
-            user.username = u_form.cleaned_data['email']
-            u_form.save()
-            messages.success(request, 'Your account has been updated!')
-            return redirect('profile')
-    else:
-        u_form = CustomUserChangeForm(instance=user)
-    return render(request, 'edit_user.html', {'u_form': u_form})
+
+
+class NewUser(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
+    ''' Class based view encargada de la creacion de un nuevo usuario'''
+    model = CustomUser
+    template_name = 'signup.html'
+    form_class = CustomUserCreationForm
+    success_url = reverse_lazy('new_user')
+    permission_required = 'users.add_customuser'
+
+class UpdateUser(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
+    ''' Class based view encargada de la edicion de un usuario'''
+    model = CustomUser
+    form_class = CustomUserChangeForm
+    template_name = 'usuario_update_form.html'
+    success_url = reverse_lazy('new_user')
+    permission_required = 'users.change_customuser'
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['initial']['rol'] = self.object.groups.all().first().pk
+        return kwargs
+
+class DeleteUser(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
+    ''' Class based view encargada de la eliminacion de un usuario'''
+    template_name = 'user_confirm_delete.html'
+    model = CustomUser
+    success_url = reverse_lazy('users_list')
+    permission_required = 'users.delete_customuser'
+
+class UserList(LoginRequiredMixin, PermissionRequiredMixin, ListView):
+    ''' Class based view encargada de listar todos los usuarios de la tabla Usuario'''
+    template_name = 'usuario_list.html'
+    model = CustomUser
+    permission_required = 'users.view_customuser'
+
+

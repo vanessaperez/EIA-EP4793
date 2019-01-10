@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <br>
+  <h1 style="text-align: center">Listado de Usuarios</h1>
+  <!--Comienzo del dataTable para los usuarios-->
+  <div class="row">
+    <div class="col">
+      <!--Tabla de usuarios-->
+      <table class="table"  style="display: contents">
+        <thead>
+          <tr style="background-color: #77933c;color: white;">
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Correo</th>
+            <th>Documento de identidad</th>
+            <th>Rol</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for user in object_list %}
+            <tr>
+              <td>{{user.first_name}}</td>
+              <td>{{user.last_name}}</td>
+              <td>{{user.email}}</td>
+              <td>{{user.doc_identidad}}</td>
+              <td>{{user.rol}}</td>
+              <td>
+                <a href="{% url 'edit_user' user.pk %}"><i class="fas fa-edit"></i></a>
+                <a href="{% url 'delete_user' user.pk %}"><i class="fas fa-trash-alt"></i></a>
+              </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+{% endblock %}

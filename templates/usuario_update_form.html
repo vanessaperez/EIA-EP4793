@@ -3,24 +3,22 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-
     <div class="row justify-content-center">
         <div class="col-2"></div>
         <div class="col-8">
             <div class="signup">
-                 <div class="row p-3 justify-content-center titulo top-rounded">
+                <div class="row p-3 justify-content-center titulo top-rounded">
                      <div class="col-md-10 col-sm-11 text-center">
-                        <h2 style="text-align: center">Crea una cuenta</h2>
+                        <h1 style="text-align: center">Editar Usuario</h1>
                      </div>
-                 </div>
+                </div>
                 <div class="row p-3 justify-content-center fondo-form bottom-rounded">
                     <div class="col-md-12">
-                        <form method="post">
-                          {% csrf_token %}
-                          <div class="col-13">
-                              {{ form|crispy }}
-                              <button type="submit" class="btn btn-success">Registrar</button>
-                          </div>
+                        <form method="POST" class="user-form">{% csrf_token %}
+                             <div class="col-11">
+                                 {{ form | crispy }}
+                             </div>
+                            <button type="submit" class="save btn btn-primary" style="margin-left: 12px">Save</button>
                         </form>
                     </div>
                 </div>
@@ -29,3 +27,10 @@
         <div class="col-2"></div>
     </div>
 {% endblock %}
+{% block css %}
+<style>
+  select {
+    display: block;
+  }
+</style>
+{% endblock css %}

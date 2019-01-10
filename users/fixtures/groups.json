@@ -1,0 +1,40 @@
+[
+{
+  "model": "auth.group",
+  "fields": {
+    "name": "Administrador del Sistema",
+    "permissions": [
+        
+        [
+        "add_customuser",
+        "users",
+        "customuser"
+      ],
+      [
+        "change_customuser",
+        "users",
+        "customuser"
+      ],
+      [
+        "delete_customuser",
+        "users",
+        "customuser"
+      ],
+      [
+        "view_customuser",
+        "users",
+        "customuser"
+      ]
+ ]
+     
+  }
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "name": "Solicitante o Promotor",
+    "permissions": []
+  }
+}
+
+] 

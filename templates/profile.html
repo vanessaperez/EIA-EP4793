@@ -4,12 +4,50 @@
 
 {% block content %}
 
-    <div class="user" >
-        <h3>Usuario: {{ user.first_name }} {{ user.last_name }}</h3>
-        <h3>Correo: {{ user.email}}</h3>
-        <h3>Documento de Identidad: {{ user.doc_identidad}}</h3>
-     <!--   <p><a href="{% url 'edit_user' pk=user.pk %}">Edit User</a></p>
-        <p><a href="{% url 'logout' %}">Log out</a></p> -->
+
+    <div class="signup">
+        <div class="row">
+            <div class="col-sm-12">
+                 <div class="row justify-content-md-center">
+                        <div class="col-md-8 offset-md-0  toppad" >
+                            <div class="card">
+                                <div class="card-body">
+                                    <h2 class="card-title">Tu Perfil</h2>
+                                    <hr>
+                                    <table class="table table-user-information ">
+                                        <tbody>
+                                            <tr>
+                                                <td>Usuario:</td>
+                                                <td>{{ user.username }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nombre:</td>
+                                                <td>{{ user.first_name }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Apellido:</td>
+                                                <td>{{ user.last_name }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Documento de Identidad:</td>
+                                                <td>
+                                                   {{ user.doc_identidad }}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Correo:</td>
+                                                <td>
+                                                   {{ user.email }}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
     </div>
+
 
 {% endblock %}
